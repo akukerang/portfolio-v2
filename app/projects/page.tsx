@@ -11,7 +11,7 @@ const Projects = () => {
     <div>
       <Ls activeLink="projects" />
       {step >= 1 && <ProjectList />}
-      {step >= 2 && <Command filePath="projects/" command="|" />}
+      {step >= 2 && <Command filePath="Projects" command="|" />}
     </div>
   );
 };
