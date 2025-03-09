@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import "./command.css";
 
 interface CommandProps {
+  filePath?: string;
   command: string;
 }
 
@@ -16,7 +17,7 @@ const Command:React.FC<CommandProps> = (params) => {
   return (
     <p>
       <span className="color-3">gabe@dev</span>:
-      <span className="color-5">~</span>
+      <span className="color-5">~{params.filePath ? "/" + params.filePath : ""}</span>
       {"$ "}
       {params.command === "|" ? (
         <span className={`cursor ${animationEnabled ? "blinking" : ""}`}>

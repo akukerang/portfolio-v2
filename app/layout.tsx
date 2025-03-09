@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import DesktopTaskbar from "@/components/desktopTaskbar";
+import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Gabriel Suoth Portfolio",
+  title: "gabe@dev",
   description: "Portfolio website of Gabriel Suoth, a software developer",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -14,9 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack-subset.css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+        <link rel="icon" type="image/png" href="/icon.png" />
+
       </head>
       <body>
         <div className="desktop">

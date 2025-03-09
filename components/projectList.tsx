@@ -9,7 +9,7 @@ const ProjectList = () => {
   return (
     <div className="project-list">
       {step >= 1 && <Command command="cd Projects" />}
-      {step >= 2 && <Command command="ls -l" />}
+      {step >= 2 && <Command filePath="projects" command="ls -l" />}
       {step >= 3 && (
         <div className="project-list-body">
           <p>Click on a project for more information</p>
