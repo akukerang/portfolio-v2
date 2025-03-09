@@ -1,83 +1,86 @@
 .neobody {
-    display: flex;
+  display: flex;
 }
 
+
 .profile-pic {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%; 
-    margin: 1vh 4vw 1vh 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 1vh 4vw 1vh 1vw;
 }
 
 .profile-pic img {
-    width: 20vw; 
+  width: 20vw;
 }
 
 .links {
   display: flex;
 }
 
-.first-link{
-  margin-left: 0.5rem;
+.first-link {
+  margin-left: .8vw;
 }
 
 .links a {
-    color: var(--color_04);
-    text-decoration: underline;
-    transition: filter 0.3s;
-    margin-right: 1rem;
+  color: var(--color_04);
+  text-decoration: underline;
+  transition: filter 0.3s;
+  margin-right: .8vw;
+
+  
 }
 
 .links a:hover {
-    filter: brightness(0.8); 
+  filter: brightness(0.8);
 }
 
 .color-palette {
-    display: flex;
-    margin-top: 4vh;
-    align-items: left;
+  display: flex;
+  margin-top: 4vh;
+  align-items: left;
 }
 
 .color-block {
-    width: 1.8vw;
-    height: 5.4vh;
-    
+  width: 1.8vw;
+  height: 5.4vh;
+
 }
 
 .bgcolor-1 {
-    background-color: var(--color_01);
-  }
+  background-color: var(--color_01);
+}
 
-  .bgcolor-2 {
-    background-color: var(--color_02);
-  }
+.bgcolor-2 {
+  background-color: var(--color_02);
+}
 
-  .bgcolor-3 {
-    background-color: var(--color_03);
-  }
+.bgcolor-3 {
+  background-color: var(--color_03);
+}
 
-  .bgcolor-4 {
-    background-color: var(--color_04);
-  }
+.bgcolor-4 {
+  background-color: var(--color_04);
+}
 
-  .bgcolor-5 {
-    background-color: var(--color_05);
-  }
+.bgcolor-5 {
+  background-color: var(--color_05);
+}
 
-  .bgcolor-6 {
-    background-color: var(--color_06);
-  }
+.bgcolor-6 {
+  background-color: var(--color_06);
+}
 
-  .bgcolor-7 {
-    background-color: var(--color_07);
-  }
+.bgcolor-7 {
+  background-color: var(--color_07);
+}
 
-  .bgcolor-8 {
-    background-color: var(--color_08);
-  }
+.bgcolor-8 {
+  background-color: var(--color_08);
+}
 
-  .neobody h1 {
-    font-size: 1.8rem;
-    
-  }
+.neobody h1 {
+  font-size: 3.3vh;
+
+}

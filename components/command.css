@@ -21,14 +21,14 @@
 
 .cursor {
   display: inline-block;
-  width: 10px;
+  width: .7vw;
   height: 1em;
   background-color: var(--color_08);
 }
 
 .blinking {
   animation: blink 1.5s step-end infinite;
-  height: 1em;
+  height: 1.1em;
 }
 
 @keyframes blink {

@@ -32,6 +32,8 @@
     background: rgba(0, 0, 0, 0.5); 
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    /* padding: 0.5rem rem; */
+    padding: 0.8vh 1.3vw;
     cursor: pointer;
+    font-size: 2vh;
 }
