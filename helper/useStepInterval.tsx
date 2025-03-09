@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
+import { useAnimation } from '@/helper/AnimationContext';
 interface UseStepIntervalProps {
   maxStep: number;
   time: number;
@@ -9,11 +9,9 @@ interface UseStepIntervalProps {
 
 const useStepInterval = ({ maxStep, time }: UseStepIntervalProps): number => {
   const [step, setStep] = useState(0);
-
+  const { animationToggled } = useAnimation();
   useEffect(() => {
-    const animationEnabled = localStorage.getItem("animationEnabled");
-
-    if (!animationEnabled || animationEnabled === "false") {
+    if (!animationToggled) {
       setStep(maxStep);
     } else {
       const interval = setInterval(() => {

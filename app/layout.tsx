@@ -1,5 +1,7 @@
 import "./globals.css";
 import DesktopTaskbar from "@/components/desktopTaskbar";
+import {AnimationProvider} from "@/helper/AnimationContext";
+import { ThemeProvider } from "@/helper/ThemeContext";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "gabe@dev",
@@ -25,8 +27,11 @@ export default function RootLayout({
 
       </head>
       <body>
+        <AnimationProvider>
         <div className="desktop">
-          <DesktopTaskbar />
+          <ThemeProvider>
+            <DesktopTaskbar />
+          </ThemeProvider>
           <div className="terminal">
             <div className="taskbar">
               <div className="taskbar-title">gabe@dev</div>
@@ -47,7 +52,7 @@ export default function RootLayout({
             </div>
           </div>
         </div>
-
+        </AnimationProvider>
       </body>
     </html>
   );

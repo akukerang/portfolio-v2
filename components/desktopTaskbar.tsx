@@ -3,7 +3,9 @@
 import React, { useEffect, useState } from "react";
 import themes from "../data/themes.json";
 import Clock from "./clock";
+import { useAnimation } from '@/helper/AnimationContext';
 import "./desktopTaskbar.css";
+import { useTheme } from "@/helper/ThemeContext";
 
 type Theme = {
   name: string;
@@ -25,6 +27,7 @@ type Themes = {
   latte: Theme;
   frappe: Theme;
   mocha: Theme;
+  ubuntu: Theme
   dracula: Theme;
 };
 
@@ -34,7 +37,8 @@ const DesktopTaskbar: React.FC = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const [selectedTheme, setSelectedTheme] = useState<keyof Themes>("macchiato");
+  const { selectedTheme, setSelectedTheme } = useTheme()
+
   const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedTheme = e.target.value as keyof Themes;
     setSelectedTheme(selectedTheme);
@@ -42,41 +46,16 @@ const DesktopTaskbar: React.FC = () => {
     for (const variable in theme) {
       document.documentElement.style.setProperty(variable, theme[variable as keyof Theme]);
     }
-    localStorage.setItem("selectedThemeLocal", selectedTheme);
   };
 
   useEffect(() => {
-    const selectedThemeLocal = localStorage.getItem("selectedThemeLocal") as keyof Themes | null;
-    if (selectedThemeLocal) {
-      setSelectedTheme(selectedThemeLocal);
-      const theme = themes[selectedThemeLocal];
-      for (const variable in theme) {
-        document.documentElement.style.setProperty(variable, theme[variable as keyof Theme]);
-      }
-    } else {
-      localStorage.setItem("selectedThemeLocal", selectedTheme);
-      const theme = themes[selectedTheme];
-      for (const variable in theme) {
-        document.documentElement.style.setProperty(variable, theme[variable as keyof Theme]);
-      }
+    const theme = themes[selectedTheme];
+    for (const variable in theme) {
+      document.documentElement.style.setProperty(variable, theme[variable as keyof Theme]);
     }
   }, []);
 
-  const [animationToggled, setAnimationToggled] = useState(true);
-  const toggleAnimation = () => {
-    const newAnimationState = !animationToggled;
-    setAnimationToggled(newAnimationState);
-    localStorage.setItem("animationEnabled", newAnimationState.toString());
-  };
-
-  useEffect(() => {
-    const animationEnabled = localStorage.getItem("animationEnabled");
-    if (animationEnabled !== null) {
-      setAnimationToggled(animationEnabled === "true");
-    } else {
-      localStorage.setItem("animationEnabled", animationToggled.toString());
-    }
-  }, []);
+  const { animationToggled, toggleAnimation } = useAnimation();
 
   return (
     <div className="desktop-taskbar">

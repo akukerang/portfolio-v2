@@ -13,7 +13,7 @@ const ProjectPage = () => {
   return (
     <div>
       <Ls />
-      {steps >= 1 && <Command filePath="Projects/" command={commandString} />}
+      {steps >= 1 && <Command filePath="Projects" command={commandString} />}
       {steps >= 2 && params.name && <ProjectInfo ProjectName={params.name as string} />}
     </div>
   );

@@ -1,6 +1,6 @@
-"use client";
-import React, {useState, useEffect} from "react";
+import React from "react";
 import "./command.css";
+import { useAnimation } from '@/helper/AnimationContext';
 
 interface CommandProps {
   filePath?: string;
@@ -8,22 +8,17 @@ interface CommandProps {
 }
 
 const Command:React.FC<CommandProps> = (params) => {
-  const [animationEnabled, setAnimationEnabled] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    setAnimationEnabled(localStorage.getItem("animationEnabled") === "true");
-  }, []);
-
+  const { animationToggled } = useAnimation();
   return (
     <p>
       <span className="color-3">gabe@dev</span>:
       <span className="color-5">~{params.filePath ? "/" + params.filePath : ""}</span>
       {"$ "}
       {params.command === "|" ? (
-        <span className={`cursor ${animationEnabled ? "blinking" : ""}`}>
+        <span className={`cursor ${animationToggled ? "blinking" : ""}`}>
           |
         </span>
-      ) : !animationEnabled || params.command === "ls" ? (
+      ) : !animationToggled || params.command === "ls" ? (
         <span className="command-body">{params.command}</span>
       ) : (
         <span className="command-body typing">{params.command}</span>
