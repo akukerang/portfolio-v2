@@ -1,0 +1,18 @@
+.list-item {
+    color: var(--color_05);
+    text-decoration: underline;
+    font-size:1.1em;
+}
+
+list-item:hover {
+    filter: brightness(0.8);
+}
+
+.lsbody {
+    display: flex;
+    gap: 1rem;
+}
+
+.lsbody .active {
+    color: var(--color_07);
+}

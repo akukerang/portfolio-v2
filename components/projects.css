@@ -1,0 +1,42 @@
+.projectItem {
+    margin-bottom: 1em;
+}
+
+.name {
+    text-decoration: underline;
+    font-size: 1.2em;
+}
+
+.projectInfo h1 {
+    color: var(--color_05);
+}
+
+.info-body{
+    display:flex;
+}
+
+.info-body-text{
+    margin: 0 2em;
+}
+
+.github-icon {
+    fill: var(--color_04);
+    width: 2.2vw;
+    transition: filter 0.3s;
+}
+
+.github-icon:hover {
+    filter: brightness(0.8); 
+
+}
+
+.back-button {
+    color: var(--color_06);
+    font-size: 1.2em;
+
+}
+
+.yt-video {
+    width: 30vw;
+    height: 40vh;
+}
