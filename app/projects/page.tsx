@@ -5,7 +5,7 @@ import ProjectList from "@/components/projectList";
 import Command from "@/components/command";
 import useStepInterval from "@/helper/useStepInterval";
 const Projects = () => {
-  const step = useStepInterval({maxStep:2, time:600});
+  const step = useStepInterval({maxStep:2, time:300});
   return (
     <div>
       {step >= 1 && <ProjectList />}

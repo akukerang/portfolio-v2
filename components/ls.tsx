@@ -1,16 +1,15 @@
 "use client";
 import React from "react";
-import Command from "./command";
+import CommandStatic from "./command-static";
 import "./ls.css";
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
 
 const Ls = () => {
   const pathname = usePathname();
-  console.log(pathname)
   return (
     <div className="ls">
-      <Command command="ls" />
+      <CommandStatic command="ls" />
       <div className="lsbody">
         <Link
           href="/"

@@ -21,7 +21,7 @@
 
 .cursor {
   display: inline-block;
-  width: .7vw;
+  width: .6vw;
   height: 1em;
   background-color: var(--color_08);
 }

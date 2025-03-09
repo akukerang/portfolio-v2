@@ -10,7 +10,7 @@ interface AnimationContextType {
 const AnimationContext = createContext<AnimationContextType | undefined>(undefined);
 
 interface AnimationProviderProps {
-  children: ReactNode;
+  children: ReactNode;  
 }
 
 export const AnimationProvider: React.FC<AnimationProviderProps> = ({ children }) => {
@@ -19,7 +19,6 @@ export const AnimationProvider: React.FC<AnimationProviderProps> = ({ children }
   // Toggle animation state
   const toggleAnimation = () => {
     setAnimationToggled(prevState => !prevState);
-    console.log(`Animation toggled: ${!animationToggled}`);
   };
 
   return (

@@ -28,8 +28,8 @@ export default function RootLayout({
 
       </head>
       <body>
-        <AnimationProvider>
         <div className="desktop">
+          <AnimationProvider>
           <ThemeProvider>
             <DesktopTaskbar />
           </ThemeProvider>
@@ -53,8 +53,9 @@ export default function RootLayout({
               {children}
             </div>
           </div>
+          </AnimationProvider>
         </div>
-        </AnimationProvider>
+        
       </body>
     </html>
   );
