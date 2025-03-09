@@ -2,6 +2,7 @@ import "./globals.css";
 import DesktopTaskbar from "@/components/desktopTaskbar";
 import {AnimationProvider} from "@/helper/AnimationContext";
 import { ThemeProvider } from "@/helper/ThemeContext";
+import Ls from "@/components/ls";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "gabe@dev",
@@ -48,6 +49,7 @@ export default function RootLayout({
               </div>
             </div>
             <div className="terminal-body">
+              <Ls />
               {children}
             </div>
           </div>

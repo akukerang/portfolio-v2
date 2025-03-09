@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import React, { useEffect, useState } from "react";
 import "./projects.css";
@@ -22,7 +23,6 @@ type ProjectData = {
   [key: string]: Project;
 };
 
-// Cast projectData to the defined type
 const projects: ProjectData = projectData;
 
 const ProjectInfo: React.FC<ProjectInfoProps> = (params) => {

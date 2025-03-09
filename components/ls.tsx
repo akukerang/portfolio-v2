@@ -1,28 +1,27 @@
+"use client";
 import React from "react";
 import Command from "./command";
 import "./ls.css";
 import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
-interface lsProps {
-  activeLink?: string;
-}
-
-const Ls:React.FC<lsProps> = (params) => {
-  const { activeLink } = params;
+const Ls = () => {
+  const pathname = usePathname();
+  console.log(pathname)
   return (
     <div className="ls">
       <Command command="ls" />
       <div className="lsbody">
         <Link
           href="/"
-          className={activeLink === "about" ? "active list-item" : "list-item"}
+          className={pathname === "/" ? "active list-item" : "list-item"}
         >
           About
         </Link>
         <Link
           href="/projects"
           className={
-            activeLink === "projects" ? "active list-item" : "list-item"
+            pathname === "/projects" ? "active list-item" : "list-item"
           }
         >
           Projects
@@ -30,7 +29,7 @@ const Ls:React.FC<lsProps> = (params) => {
         <Link
           href="/services"
           className={
-            activeLink === "services" ? "active list-item" : "list-item"
+            pathname === "/services" ? "active list-item" : "list-item"
           }
         >
           Services
