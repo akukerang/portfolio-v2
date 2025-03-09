@@ -1,0 +1,100 @@
+{
+    "guideGuru": {
+        "description": "AI trip planner",
+        "date": "10-07-23",
+        "lang": "Python, Flask, APIs",
+        "summary": "Guide Guru is an AI trip planner made for Knight Hacks 2023. By entering a location and factors such as the occasion, budget, and interests. It will then give you a list of potential locations within the area. The user will select the locations they are interested in, and then the system will generate an itinerary for them via AI.",
+        "link": "https://github.com/akukerang/GuideGuru",
+        "images": [
+            "https://github.com/akukerang/GuideGuru/assets/122495108/1129aeaa-eb27-4f72-be88-2daff0d092f5",
+            "https://github.com/akukerang/GuideGuru/assets/122495108/a93def95-2a2a-4845-87b9-e7301f6de1c6",
+            "https://github.com/akukerang/GuideGuru/assets/122495108/fe1df90d-ed9c-4b97-8d34-db48b1fea04a",
+            "https://github.com/akukerang/GuideGuru/assets/122495108/62db4c42-f919-4c09-94e3-70b43dbeb593"
+        ],
+        "videos":""
+    },
+    "filesharer": {
+        "description": "Secure cryptographic file sharing service",
+        "date": "03-05-23",
+        "lang": "Java, SQL",
+        "summary": "File Sharer is a \"secure\" file sharing service. This program aims to provide a secure platform for sharing files between users. It does this by first encrypting the file's data via AES, then it encrypts the 192-bit symmetric key through RSA using a 2048-bit key. This program also includes a account creation system, and stores all passwords as hashes. All prime numbers are generaeted through a Miller Rabin primality generator.",
+        "link": "https://github.com/akukerang/filesharer",
+        "images": [
+            "https://raw.githubusercontent.com/akukerang/filesharer/main/pictures/Cryptography%20Project(2).png",
+            "https://raw.githubusercontent.com/akukerang/filesharer/main/pictures/Cryptography%20Project(4).png",
+            "https://raw.githubusercontent.com/akukerang/filesharer/main/pictures/Cryptography%20Project(5).png",
+            "https://raw.githubusercontent.com/akukerang/filesharer/main/pictures/Cryptography%20Project(6).png",
+            "https://raw.githubusercontent.com/akukerang/filesharer/main/pictures/Cryptography%20Project(7).png",
+            "https://raw.githubusercontent.com/akukerang/filesharer/main/pictures/Cryptography%20Project(8).png",
+            "https://raw.githubusercontent.com/akukerang/filesharer/main/pictures/Cryptography%20Project(9).png",
+            "https://raw.githubusercontent.com/akukerang/filesharer/main/pictures/Cryptography%20Project(10).png"
+        ],
+        "videos":""
+    },
+    "real-worth": {
+        "description": "Salary sharing mobile app",
+        "date": "03-01-23",
+        "lang": "Flutter, Dart, Firebase",
+        "summary": "Real Worth is a salary sharing mobile app submitted for the GDSC Solution Challenge 2023. It attempts to promote wage transparency by allowing users to anonymously share their salary and view other user's salaries. They can also view other variables such as race, gender, education, years worked to better understand if they and others are being properly paid.",
+        "link": "https://github.com/akukerang/real-worth",
+        "images": [
+            "https://i.imgur.com/htsluKI.png"
+        ],
+        "videos":""
+    },
+    "vtuber-finder": {
+        "description": "Vtuber recommendation system",
+        "date": "12-14-22",
+        "lang": "Python, Web Scraping, Flask",
+        "summary": "Vtuber Finder is a recommendation system for Vtubers. It uses a dataset of Vtubers and their respective top 100 keywords gathered from their wiki page. The user can input keywords or other vtubers, and the system will output a list of Vtubers that have similar keywords.",
+        "link": "https://github.com/akukerang/vtuber-finder",
+        "images": [
+            "https://github.com/akukerang/vtuber-finder/raw/main/images/vtubers.png",
+            "https://github.com/akukerang/vtuber-finder/raw/main/images/keywords.png"
+        ],
+        "videos":""
+    },
+    "studySurfer": {
+        "description": "TikTok style study Tool",
+        "date": "11-15-22",
+        "lang": "Python",
+        "summary": "StudySurfer is a study tool that creates TikTok style videos that promote engagement via the use of engaging visuals and audio. The user can input a script and the program will generate a video with captions, text to speech, and the specified background video.",
+        "link": "https://github.com/akukerang/StudySurfer",
+        "images": [
+            ],
+        "videos": "https://www.youtube-nocookie.com/embed/J91lMOY1X_I?si=WPo2o6KkbiwmPTpV"
+    },
+    "gassedUp": {
+        "description": "Locate the best gas station in your area",
+        "date": "10-22-22",
+        "lang": "Python, Flask, APIs",
+        "summary": "GassedUp is an app that attempts to find the best gas station in your area. It finds this through calculating your car model's fuel type and efficiency, the distance to the gas station, and the gas station's price per gallon.",
+        "link": "https://github.com/akukerang/GassedUp",
+        "images": [
+            "https://github.com/akukerang/GassedUp/raw/main/images/form.png",
+            "https://github.com/akukerang/GassedUp/raw/main/images/best.png",
+            "https://github.com/akukerang/GassedUp/raw/main/images/table.png"
+        ],
+        "videos":""
+    },
+    "saberfy": {
+        "description": "Spotify to Beat Saber map convertor",
+        "date": "09-10-22",
+        "lang": "Python, APIs",
+        "summary": "Saberfy is a hackathon project for Shellhacks 2022. It won the awards of \"Best First Time Hacker\" and \"Overall Second Place\". It is a tool that converts a Spotify link into a Beat Saber map. Through the use of the Spotify API, it places notes on the map based on the characteristics of the song. Also giving the option of difficulty levels, adjusting the density of notes.",
+        "link": "https://github.com/akukerang/Saberfy",
+        "images": [],
+        "videos":""
+    },
+    "spToBuff": {
+        "description": "CSGO skin price comparison tool",
+        "date": "04-23-22",
+        "lang": "Python, Tkinter, APIs",
+        "summary": "SpToBuff is a price comparison tool for CSGO skins between the Skinport market and Buff. These markets are important because Buff is a Chinese site so getting funds on that site is difficult for non-Chinese users, and Buff usually has better deals. Skinport has generally better prices than the Steam Market, and it is available for non-Chinese users. This tool can be used to get \"Buff balance\", by finding cheaper skins on Skinport and selling it on Buff for a higher price, taking in account fees and such.",
+        "link": "https://github.com/akukerang/sptobuff",
+        "images": [
+            "https://github.com/akukerang/sptobuff/raw/master/images/sptobuff.png"
+        ],
+        "videos":""
+    }
+}
