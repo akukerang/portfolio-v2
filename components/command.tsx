@@ -10,7 +10,7 @@ interface CommandProps {
 const Command:React.FC<CommandProps> = (params) => {
   const { animationToggled } = useAnimation();
   return (
-    <p>
+    <p className="text-lg">
       <span className="color-3">gabe@dev</span>:
       <span className="color-5">~{params.filePath ? "/" + params.filePath : ""}</span>
       {"$ "}
@@ -19,9 +19,9 @@ const Command:React.FC<CommandProps> = (params) => {
           |
         </span>
       ) : !animationToggled || params.command === "ls" ? (
-        <span className="command-body">{params.command}</span>
+        <span className="">{params.command}</span>
       ) : (
-        <span className="command-body typing">{params.command}</span>
+        <span className=" typing">{params.command}</span>
       )}
     </p>
   );

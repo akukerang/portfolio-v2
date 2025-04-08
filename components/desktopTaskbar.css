@@ -25,7 +25,7 @@
   gap: 0.5vw;
 }
 
-.toolbar .bi {
+.bi {
   width: 3vh;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .bi-caret-down-fill:hover {
- filter: brightness(0.8);
+  filter: brightness(0.8);
 }
 
 .dropdown-menu {
@@ -78,10 +78,10 @@
 }
 
 .switch {
-  --switch-width: 2.75em; 
-  --switch-height: 1.5em; 
-  --knob-size: 1.2em; 
-  --knob-offset: 0.14em; 
+  --switch-width: 2.75em;
+  --switch-height: 1.5em;
+  --knob-size: 1.2em;
+  --knob-offset: 0.14em;
   --transform-distance: calc(var(--switch-width) - var(--knob-size) - var(--knob-offset) * 2);
 
   position: relative;
@@ -106,7 +106,7 @@
   bottom: 0;
   background-color: #ccc;
   transition: 0.4s;
-  border-radius: var(--switch-height); 
+  border-radius: var(--switch-height);
 }
 
 .slider:before {
@@ -118,17 +118,17 @@
   bottom: var(--knob-offset);
   background-color: white;
   transition: 0.4s;
-  border-radius: 50%; 
+  border-radius: 50%;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 0.0625em #2196F3; 
+input:focus+.slider {
+  box-shadow: 0 0 0.0625em #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(var(--transform-distance));
 }

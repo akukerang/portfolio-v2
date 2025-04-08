@@ -1,4 +1,4 @@
-
+@import "tailwindcss";
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -19,15 +19,23 @@ body {
     --color_08: rgb(181, 191, 226)
 }
 
-.terminal {
+.terminal-body {
+  color: var(--color_08);
+  padding-left: 1.4vw;
+  font-family: 'Hack', monospace;
+}
+
+
+
+/* .terminal {
   margin: 0 auto;
   margin-top: 7vh;
   background-color: var(--bg-color);
   max-width: 70vw;
   min-height: 80vh;
   border-radius: 5px;
-  overflow-y:visible;
-  overflow-x:hidden;
+  overflow-y: visible;
+  overflow-x: hidden;
 
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
 }
@@ -65,18 +73,12 @@ body {
   margin-left: 0.5vw;
 }
 
-.terminal-body {
-  color: var(--color_08);
-  padding-left: 1.4vw;
-  font-family: 'Hack',  monospace;
-
-}
 
 .terminal-body {
   line-height: 2vh;
   font-size: 2vh;
-  
-}
+
+} */
 
 .color-1 {
   color: var(--color_01);

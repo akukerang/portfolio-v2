@@ -58,14 +58,16 @@ const DesktopTaskbar: React.FC = () => {
   const { animationToggled, toggleAnimation } = useAnimation();
 
   return (
-    <div className="desktop-taskbar">
-      <div className="os">gabeOS</div>
+    <div className="fixed top-0 left-0 w-[100%] h-8 flex items-center justify-between 
+    bg-[var(--task-bar)] text-[var(--color_08)]
+    ">
+      <div className="ml-5">gabeOS</div>
       <Clock />
-      <div className="toolbar">
-        <svg
+      <div className="flex justify-between gap-10 items-center">
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          className="bi bi-battery-half"
+          className="w-3"
           viewBox="0 0 16 16"
         >
           <path d="M2 6h5v4H2z" />
@@ -74,7 +76,7 @@ const DesktopTaskbar: React.FC = () => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          className="bi bi-volume-up-fill"
+          className=""
           viewBox="0 0 16 16"
         >
           <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z" />
@@ -84,7 +86,7 @@ const DesktopTaskbar: React.FC = () => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          className="bi bi-wifi"
+          className=""
           viewBox="0 0 16 16"
         >
           <path d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049" />
@@ -98,7 +100,7 @@ const DesktopTaskbar: React.FC = () => {
           onClick={toggleDropdown}
         >
           <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-        </svg>
+        </svg> */}
         {isDropdownOpen && themes ? (
           <div className="dropdown-menu">
             <div className="dropdown-item">

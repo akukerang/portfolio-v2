@@ -28,13 +28,18 @@ export default function RootLayout({
 
       </head>
       <body>
-        <div className="desktop">
+        <div className="flex flex-col justify-between min-h-screen">
           <AnimationProvider>
           <ThemeProvider>
             <DesktopTaskbar />
           </ThemeProvider>
-          <div className="terminal">
-            <div className="taskbar">
+          {/* <div className="terminal text-[var(--color_08)] min-h-[80vh] min-w-70%
+          flex flex-col items-center justify-center
+          overflow-y-auto overflow-x-hidden bg-[var(--bg-color)]
+          ]">
+            <div className="relative flex w-full
+            bg-[var(--task-bar)] items-center 
+            ">
               <div className="taskbar-title">gabe@dev</div>
               <div className="taskbar-buttons">
                 <span className="taskbar-button" style={{ color: "var(--color_03)" }}>
@@ -48,11 +53,11 @@ export default function RootLayout({
                 </span>
               </div>
             </div>
-            <div className="terminal-body">
+            <div className="">
               <Ls />
               {children}
             </div>
-          </div>
+          </div> */}
           </AnimationProvider>
         </div>
         

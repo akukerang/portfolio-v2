@@ -79,7 +79,7 @@ const ProjectInfo: React.FC<ProjectInfoProps> = ({ProjectName}) => {
               <p>{project.summary}</p>
               <p>
                 <span className="color-2">Technologies used</span>:{" "}
-                {project.languages}
+                {project.languages ? project.languages : "N/A"}
               </p>
 
               <Link
