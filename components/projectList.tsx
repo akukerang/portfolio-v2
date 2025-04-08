@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Command from "./command";
 import ProjectItem from "./projectItem";
-import projectData from "@/data/projects.json";
 import useStepInterval from "@/helper/useStepInterval";
+import { createClient } from '@supabase/supabase-js'
 const ProjectList = () => {
   const step = useStepInterval({maxStep:3, time:200});
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
+  );
+  const [projectData, setProjectData] = React.useState<any[]>([]);
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const projects = supabase.from("projects").select().order("date", { ascending: false });
+      const { data, error } = await projects;
+      if (error) {
+        console.error("Error fetching projects:", error);
+      } 
+      setProjectData(data || []);
+      };
+    fetchProjects();
+  }, []);
+
+
+
+
 
   return (
     <div className="project-list">
@@ -14,13 +34,13 @@ const ProjectList = () => {
         <div className="project-list-body">
           <p>Click on a project for more information</p>
           <div className="project-list-body">
-            {Object.entries(projectData).map(([name, project], index) => (
+            {Object.entries(projectData).map(([key, project], index) => (
               <ProjectItem
                 key={index}
-                name={name}
+                name={project.name}
                 description={project.description}
                 date={project.date}
-                lang={project.lang}
+                lang={project.languages}
               />
             ))}
           </div>

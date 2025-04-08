@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import "./projects.css";
 import projectData from "@/data/projects.json";
 import Carousel from "./carousel";
+import { createClient } from '@supabase/supabase-js'
+
 
 interface ProjectInfoProps {
   ProjectName: string;
@@ -15,8 +17,8 @@ type Project = {
   lang: string;
   summary: string;
   link: string;
-  images: string[];
-  videos: string;
+  // images: string[];
+  // videos: string;
 };
 
 type ProjectData = {
@@ -25,24 +27,42 @@ type ProjectData = {
 
 const projects: ProjectData = projectData;
 
-const ProjectInfo: React.FC<ProjectInfoProps> = (params) => {
-  const [project, setProject] = useState<Project | null>(null);
+const ProjectInfo: React.FC<ProjectInfoProps> = ({ProjectName}) => {
+  // const [project, setProject] = useState<Project | null>(null);
+  const [project, setProject] = useState<any>(null);
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
+  );
+  // useEffect(() => {
+  //   if (params.ProjectName) {
+  //     setProject(projects[params.ProjectName]);
+  //   }
+  // }, [params.ProjectName]);
 
-  useEffect(() => {
-    if (params.ProjectName) {
-      setProject(projects[params.ProjectName]);
-    }
-  }, [params.ProjectName]);
+
+
+    useEffect(() => {
+      const fetchProject = async () => {
+        const project = supabase.from("projects").select().eq("name", ProjectName);
+        const { data, error } = await project;
+        if (error) {
+          console.error("Error fetching projects:", error);
+        } 
+        setProject(data?.[0] || []);
+        };
+        fetchProject();
+    }, [ProjectName]);
 
   return (
     <div className="projectInfo">
       {project ? (
         <>
           <div className="info-body">
-            {project.images.length > 0 ? (
-              <Carousel images={project.images} />
+            {project.media['images'].length > 0 ? (
+              <Carousel images={project.media['images']} />
             ) : null}
-            {project.videos ? (
+            {/* {project.media.videos.length > 0 ? (
               <div>
                 <iframe
                   className="yt-video"
@@ -54,17 +74,17 @@ const ProjectInfo: React.FC<ProjectInfoProps> = (params) => {
                   allowFullScreen
                 ></iframe>
               </div>
-            ) : null}
+            ) : null} */}
 
             <div className="info-body-text">
               <Link href="/projects" className="back-button">
                 Back
               </Link>
-              <h1>{params.ProjectName}</h1>
+              <h1>{ProjectName}</h1>
               <p>{project.summary}</p>
               <p>
                 <span className="color-2">Technologies used</span>:{" "}
-                {project.lang}
+                {project.languages}
               </p>
               <Link
                 href={project.link}
