@@ -2,67 +2,62 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from "react";
 import "./projects.css";
-import projectData from "@/data/projects.json";
 import Carousel from "./carousel";
 import { createClient } from '@supabase/supabase-js'
+import { Database, Tables } from "@/helper/supabase"
 
 
 interface ProjectInfoProps {
   ProjectName: string;
 }
 
-type Project = {
-  description: string;
-  date: string;
-  lang: string;
-  summary: string;
-  link: string;
-  // images: string[];
-  // videos: string;
+type ProjectMedia = {
+  images?: string[];
+  videos?: string[];
 };
-
-type ProjectData = {
-  [key: string]: Project;
-};
-
-const projects: ProjectData = projectData;
 
 const ProjectInfo: React.FC<ProjectInfoProps> = ({ProjectName}) => {
-  // const [project, setProject] = useState<Project | null>(null);
-  const [project, setProject] = useState<any>(null);
-  const supabase = createClient(
+  const [project, setProject] = useState<(Tables<'projects'> & { media?: { images?: string[] } }) | null>(null);
+  const supabase = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
   );
-  // useEffect(() => {
-  //   if (params.ProjectName) {
-  //     setProject(projects[params.ProjectName]);
-  //   }
-  // }, [params.ProjectName]);
-
-
-
-    useEffect(() => {
-      const fetchProject = async () => {
-        const project = supabase.from("projects").select().eq("name", ProjectName);
-        const { data, error } = await project;
-        if (error) {
-          console.error("Error fetching projects:", error);
-        } 
-        setProject(data?.[0] || []);
+  useEffect(() => {
+    const fetchProject = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select()
+        .eq("name", ProjectName);
+  
+      if (error) {
+        console.error("Error fetching projects:", error);
+        return;
+      }
+  
+      if (data && data[0]) {
+        const parsedProject = {
+          ...data[0],
+          media: (data[0].media || {}) as ProjectMedia,
         };
-        fetchProject();
-    }, [ProjectName]);
+        setProject(parsedProject);
+      } else {
+        setProject(null);
+      }
+    };
+  
+    fetchProject();
+  }, [ProjectName]);
+  
+
+    if(!project) return null;
 
   return (
     <div className="projectInfo">
-      {project ? (
-        <>
           <div className="info-body">
-            {project.media['images'].length > 0 ? (
-              <Carousel images={project.media['images']} />
-            ) : null}
-            {/* {project.media.videos.length > 0 ? (
+            {project.media?.images && Array.isArray(project.media.images) && project.media.images.length > 0 && (
+              <Carousel images={project.media.images} />
+            )}
+            {/* {project.media?.videos.length > 0 ? (
               <div>
                 <iframe
                   className="yt-video"
@@ -86,8 +81,9 @@ const ProjectInfo: React.FC<ProjectInfoProps> = ({ProjectName}) => {
                 <span className="color-2">Technologies used</span>:{" "}
                 {project.languages}
               </p>
+
               <Link
-                href={project.link}
+                href={project.link ? project.link : ""}
                 target="_blank"
                 className="btn btn-primary"
               >
@@ -101,8 +97,6 @@ const ProjectInfo: React.FC<ProjectInfoProps> = ({ProjectName}) => {
               </Link>
             </div>
           </div>
-        </>
-      ) : null}
     </div>
   );
 };
