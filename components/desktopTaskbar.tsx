@@ -60,7 +60,7 @@ const DesktopTaskbar: React.FC = () => {
   const { animationToggled, toggleAnimation } = useAnimation();
 
   return (
-    <div className="fixed top-0 left-0 w-[100%] h-8 flex items-center justify-between 
+    <div className="w-[100%] h-8 flex items-center justify-between 
     bg-[var(--task-bar)] text-[var(--color_08)]
     ">
       <div className="ml-8">gabeOS</div>

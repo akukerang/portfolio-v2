@@ -1,39 +1,26 @@
 "use client";
 import React from "react";
 import CommandStatic from "./command-static";
-import "./ls.css";
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
+
+const LSItem = ({ name, link, active }: { name: string, link: string, active: boolean }) => {
+  return <div className={`text-xl underline hover:cursor-pointer ${active ? "text-[var(--color_07)]" : "text-[var(--color_05)]"}`}>
+    <Link href={link}>{name}</Link>
+  </div>;
+}
 
 const Ls = () => {
   const pathname = usePathname();
   return (
-    <div className="ls">
+    <div className="flex flex-col w-full">
       <CommandStatic command="ls" />
-      <div className="lsbody">
-        <Link
-          href="/"
-          className={pathname === "/" ? "active list-item" : "list-item"}
-        >
-          About
-        </Link>
-        <Link
-          href="/projects"
-          className={
-            pathname === "/projects" ? "active list-item" : "list-item"
-          }
-        >
-          Projects
-        </Link>
-        <Link
-          href="/services"
-          className={
-            pathname === "/services" ? "active list-item" : "list-item"
-          }
-        >
-          Services
-        </Link>
+      <div className="flex flex-row gap-4">
+        <LSItem name="About" link="/" active={pathname === "/"} />
+        <LSItem name="Projects" link="/projects" active={pathname === "/projects"} />
+        <LSItem name="Services" link="/services" active={pathname === "/services"} />
       </div>
+
     </div>
   );
 };

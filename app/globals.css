@@ -20,10 +20,15 @@ body {
 }
 
 .terminal-body {
-  color: var(--color_08);
-  padding-left: 1.4vw;
   font-family: 'Hack', monospace;
 }
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 
 
 
