@@ -12,7 +12,7 @@ const Command: React.FC<CommandProps> = (params) => {
       <span className="color-5">~{params.filePath ? "/" + params.filePath : ""}</span>
       {"$ "}
       {params.command === "|" ? (
-        <span className={`cursor animate-blink"`}>
+        <span className={"cursor animate-blink"}>
           |
         </span>
       ) : (

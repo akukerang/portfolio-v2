@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import Command from "./command";
 import ProjectItem from "./projectItem";
@@ -25,7 +26,6 @@ const ProjectList = () => {
     <div className="project-list">
       <Command command="cd Projects" />
       <Command filePath="Projects" command="ls -l" />
-      (
       <div className="project-list-body">
         <p>Click on a project for more information</p>
         <div className="project-list-body">
@@ -40,7 +40,6 @@ const ProjectList = () => {
           ))}
         </div>
       </div>
-      )
     </div>
   );
 };

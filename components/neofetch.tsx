@@ -1,4 +1,3 @@
-
 import React from "react";
 import Command from "./command";
 const Neofetch = () => {
@@ -58,7 +57,6 @@ const Neofetch = () => {
           </div>
         </div>
       </div>
-      )
     </div>
   );
 };
