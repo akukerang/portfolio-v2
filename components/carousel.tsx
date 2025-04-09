@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./carousel.css";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 interface CarouselProps {

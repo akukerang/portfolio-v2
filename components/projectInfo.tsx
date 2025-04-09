@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from "react";
-import "./projects.css";
 import Carousel from "./carousel";
 import { createClient } from '@supabase/supabase-js'
 import { Database, Tables } from "@/helper/supabase"
