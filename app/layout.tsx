@@ -3,6 +3,7 @@ import DesktopTaskbar from "@/components/desktopTaskbar";
 import { ThemeProvider } from "@/helper/ThemeContext";
 import Ls from "@/components/ls";
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: "gabe@dev",
@@ -60,6 +61,8 @@ export default function RootLayout({
             </div>
           </div>
         </div>
+        <SpeedInsights />
+
       </body>
     </html>
   );
