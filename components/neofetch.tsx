@@ -17,7 +17,7 @@ const Neofetch = () => {
               alt="pfp"
             ></img>
           </div>
-          <div className="w-full md:w-2/3 md:ml-8">
+          <div className="w-full md:w-2/3 md:ml-8 2xl:ml-16">
             <h1 className="color-3 text-3xl">Gabriel Suoth</h1>
             <h1>--------------------</h1>
             <p>
