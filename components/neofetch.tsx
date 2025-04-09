@@ -4,7 +4,7 @@ const Neofetch = () => {
   return (
     <div className="neofetch">
       <Command command="neofetch" />
-      <div className="flex flex-row text-lg my-4 mx-8">
+      <div className="flex flex-row text-lg my-4">
         <div className="hidden md:block md:w-1/3">
           <img
             src="https://avatars.githubusercontent.com/u/22510552?v=4"

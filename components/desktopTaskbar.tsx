@@ -57,7 +57,7 @@ const DesktopTaskbar: React.FC = () => {
 
 
   return (
-    <div className="w-[100%] h-8 flex items-center justify-between 
+    <div className="hidden md:w-[100%] md:h-8 md:flex items-center justify-between 
     bg-[var(--task-bar)] text-[var(--color_08)] absolute">
       <div className="ml-8">gabeOS</div>
       <Clock />

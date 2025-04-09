@@ -37,7 +37,7 @@ export default function RootLayout({
           </ThemeProvider>
 
           {/* Main content container */}
-          <div className="flex flex-col mt-16 items-center h-full">
+          <div className="flex flex-col md:mt-16 items-center h-full">
             <div className="flex flex-col w-full md:w-[70%] color-8 h-screen">
 
               {/* Taskbar */}
