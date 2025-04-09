@@ -40,21 +40,21 @@ export default function RootLayout({
 
             {/* Main content container */}
             <div className="flex flex-col mt-8 items-center h-full">
-              <div className="flex flex-col min-w-[70%] text-[var(--color_08)]">
+              <div className="flex flex-col min-w-[70%] color-8">
 
                 {/* Taskbar */}
                 <div className="relative flex w-full bg-[var(--task-bar)] items-center justify-between">
                   <div className="ml-5"></div>
                   <div className="taskbar-title ml-auto mr-auto">gabe@dev</div>
                   <div className="flex flex-row gap-1 mr-5 items-center">
-                    <span className="hover:cursor-pointer text-[var(--color_03)]">⬤</span>
-                    <span className="hover:cursor-pointer text-[var(--color_04)]">⬤</span>
-                    <span className="hover:cursor-pointer text-[var(--color_02)]">⬤</span>
+                    <span className="hover:cursor-pointer color-3">⬤</span>
+                    <span className="hover:cursor-pointer color-4">⬤</span>
+                    <span className="hover:cursor-pointer color-2">⬤</span>
                   </div>
                 </div>
 
                 {/* Terminal Content */}
-                <div className="terminal-body overflow-y-auto overflow-x-hidden flex-grow h-180
+                <div className="terminal-body overflow-y-auto overflow-x-hidden flex-grow min-h-180 max-h-180
                     flex flex-col justify-start items-start pt-4 px-8 bg-[var(--bg-color)]">
                   <Ls />
                   {children}

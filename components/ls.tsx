@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from "next/navigation";
 
 const LSItem = ({ name, link, active }: { name: string, link: string, active: boolean }) => {
-  return <div className={`text-xl underline hover:cursor-pointer ${active ? "text-[var(--color_07)]" : "text-[var(--color_05)]"}`}>
+  return <div className={`text-xl underline hover:cursor-pointer ${active ? "color-7" : "color-5"}`}>
     <Link href={link}>{name}</Link>
   </div>;
 }

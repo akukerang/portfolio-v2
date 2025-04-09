@@ -61,8 +61,7 @@ const DesktopTaskbar: React.FC = () => {
 
   return (
     <div className="w-[100%] h-8 flex items-center justify-between 
-    bg-[var(--task-bar)] text-[var(--color_08)]
-    ">
+    bg-[var(--task-bar)] text-[var(--color_08)]">
       <div className="ml-8">gabeOS</div>
       <Clock />
       <div className="mr-8 flex items-center justify-center gap-4">

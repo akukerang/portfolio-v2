@@ -6,6 +6,7 @@
   max-width: 100%;
   box-sizing: border-box;
 }
+
 .typing {
   animation: typing 2s steps(60, end);
 }
@@ -14,6 +15,7 @@
   from {
     max-width: 0;
   }
+
   to {
     max-width: 100%;
   }
@@ -32,10 +34,12 @@
 }
 
 @keyframes blink {
+
   from,
   to {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }

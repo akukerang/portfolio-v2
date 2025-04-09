@@ -48,38 +48,6 @@
 
 }
 
-.bgcolor-1 {
-  background-color: var(--color_01);
-}
-
-.bgcolor-2 {
-  background-color: var(--color_02);
-}
-
-.bgcolor-3 {
-  background-color: var(--color_03);
-}
-
-.bgcolor-4 {
-  background-color: var(--color_04);
-}
-
-.bgcolor-5 {
-  background-color: var(--color_05);
-}
-
-.bgcolor-6 {
-  background-color: var(--color_06);
-}
-
-.bgcolor-7 {
-  background-color: var(--color_07);
-}
-
-.bgcolor-8 {
-  background-color: var(--color_08);
-}
-
 .neobody h1 {
   font-size: 3.3vh;
 
