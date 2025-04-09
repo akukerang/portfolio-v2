@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Command from "./command";
 import ProjectItem from "./projectItem";
-import useStepInterval from "@/helper/useStepInterval";
 import { createClient } from '@supabase/supabase-js'
 import { Database, Tables } from "@/helper/supabase"
 const ProjectList = () => {
-  const step = useStepInterval({ maxStep: 3, time: 200 });
   const supabase = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
@@ -25,24 +23,24 @@ const ProjectList = () => {
 
   return (
     <div className="project-list">
-      {step >= 1 && <Command command="cd Projects" />}
-      {step >= 2 && <Command filePath="Projects" command="ls -l" />}
-      {step >= 3 && (
+      <Command command="cd Projects" />
+      <Command filePath="Projects" command="ls -l" />
+      (
+      <div className="project-list-body">
+        <p>Click on a project for more information</p>
         <div className="project-list-body">
-          <p>Click on a project for more information</p>
-          <div className="project-list-body">
-            {Object.entries(projects).map(([key, project]) => (
-              <ProjectItem
-                key={key}
-                name={project.name || ""}
-                description={project.description || ""}
-                date={project.date || ""}
-                lang={project.languages || ""}
-              />
-            ))}
-          </div>
+          {Object.entries(projects).map(([key, project]) => (
+            <ProjectItem
+              key={key}
+              name={project.name || ""}
+              description={project.description || ""}
+              date={project.date || ""}
+              lang={project.languages || ""}
+            />
+          ))}
         </div>
-      )}
+      </div>
+      )
     </div>
   );
 };

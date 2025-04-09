@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+  --animate-blink: blink 1.5s step-end infinite;
+
+  @keyframes blink {
+
+    from,
+    to {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+
+
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -103,39 +121,8 @@ html {
   background-attachment: fixed;
 }
 
-.typing {
-  animation: typing 2s steps(60, end);
-}
-
-@keyframes typing {
-  from {
-    max-width: 0;
-  }
-
-  to {
-    max-width: 100%;
-  }
-}
-
 .cursor {
   background-color: var(--color_08);
-}
-
-.blinking {
-  animation: blink 1.5s step-end infinite;
   height: 1rem;
-  width: .6 rem;
-}
-
-@keyframes blink {
-
-  from,
-  to {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
+  width: 0.6rem;
 }

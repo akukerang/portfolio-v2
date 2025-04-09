@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import themes from "../data/themes.json";
 import Clock from "./clock";
-import { useAnimation } from '@/helper/AnimationContext';
 import "./desktopTaskbar.css";
 import { useTheme } from "@/helper/ThemeContext";
 import WifiIcon from '@mui/icons-material/Wifi';
@@ -57,7 +56,6 @@ const DesktopTaskbar: React.FC = () => {
     }
   }, []);
 
-  const { animationToggled, toggleAnimation } = useAnimation();
 
   return (
     <div className="w-[100%] h-8 flex items-center justify-between 
@@ -96,17 +94,6 @@ const DesktopTaskbar: React.FC = () => {
                     </option>
                   ))}
                 </select>
-              </div>
-              <div className="dropdown-item">
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={toggleAnimation}
-                    checked={animationToggled}
-                  />
-                  <span className="slider round"></span>
-                </label>
-                Animations
               </div>
             </div>
           ) : null}
