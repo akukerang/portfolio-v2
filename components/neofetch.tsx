@@ -34,7 +34,7 @@ const Neofetch = () => {
             </p>
             <p>
               <span className="color-5">Frameworks/Libraries</span>: React, Next.js,
-              Node.js, Flask, Flutter, Pandas, NumPy, OpenCV, TensorFlow
+              Node.js, Tailwind, Flask, Flutter, Pandas, NumPy, OpenCV, TensorFlow
             </p>
             <p>
               <span className="color-5">Tools</span>: GNU/Linux, Docker, VS Code, Git, AutoCAD{" "}

@@ -5,28 +5,23 @@ import useStepInterval from "@/helper/useStepInterval";
 import { createClient } from '@supabase/supabase-js'
 import { Database, Tables } from "@/helper/supabase"
 const ProjectList = () => {
-  const step = useStepInterval({maxStep:3, time:200});
+  const step = useStepInterval({ maxStep: 3, time: 200 });
   const supabase = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
   );
   const [projects, setProjects] = useState<Tables<'projects'>[]>([]);
-
   useEffect(() => {
     const fetchProjects = async () => {
       const projects = supabase.from("projects").select().order("date", { ascending: false });
       const { data, error } = await projects;
       if (error) {
         console.error("Error fetching projects:", error);
-      } 
+      }
       setProjects(data || []);
-      };
+    };
     fetchProjects();
   }, []);
-
-
-
-
 
   return (
     <div className="project-list">

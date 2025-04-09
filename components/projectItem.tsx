@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import "./projects.css";
-
 interface ProjectItemProps {
   name: string;
   description: string;
@@ -8,18 +6,18 @@ interface ProjectItemProps {
   lang: string;
 }
 
-const ProjectItem:React.FC<ProjectItemProps> = (params) => {
+const ProjectItem: React.FC<ProjectItemProps> = (params) => {
   const { name, description, date, lang } = params;
   return (
-    <div className="projectItem">
+    <div className="text-lg my-1">
       {"| "}
       <span className="color-8">{date}</span>
       {" | "}
       <Link href={`/projects/${name}`}>
-        <span className="color-5 name">{name}</span>
+        <span className="color-5 text-xl hover:underline">{name}</span>
       </Link>
       {" | "}
-      <span className="color-3">{description}</span>
+      <span className="color-3 italic">{description}</span>
       {" | "}
       <span className="color-2">{lang}</span>
       {" |"}

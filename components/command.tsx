@@ -1,5 +1,4 @@
 import React from "react";
-import "./command.css";
 import { useAnimation } from '@/helper/AnimationContext';
 
 interface CommandProps {
@@ -7,7 +6,7 @@ interface CommandProps {
   command: string;
 }
 
-const Command:React.FC<CommandProps> = (params) => {
+const Command: React.FC<CommandProps> = (params) => {
   const { animationToggled } = useAnimation();
   return (
     <p className="text-lg">
@@ -21,7 +20,7 @@ const Command:React.FC<CommandProps> = (params) => {
       ) : !animationToggled || params.command === "ls" ? (
         <span className="">{params.command}</span>
       ) : (
-        <span className=" typing">{params.command}</span>
+        <span className="typing">{params.command}</span>
       )}
     </p>
   );
