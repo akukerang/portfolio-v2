@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import themes from "../data/themes.json";
 import Clock from "./clock";
-import "./desktopTaskbar.css";
 import { useTheme } from "@/helper/ThemeContext";
 import WifiIcon from '@mui/icons-material/Wifi';
 import Battery80Icon from '@mui/icons-material/Battery80';
@@ -59,46 +58,53 @@ const DesktopTaskbar: React.FC = () => {
 
   return (
     <div className="w-[100%] h-8 flex items-center justify-between 
-    bg-[var(--task-bar)] text-[var(--color_08)]">
+    bg-[var(--task-bar)] text-[var(--color_08)] absolute">
       <div className="ml-8">gabeOS</div>
       <Clock />
-      <div className="mr-8 flex items-center justify-center gap-4">
-        <WifiIcon />
-        <Battery80Icon className="rotate-90" />
-        <div>
-          <ExpandMoreIcon
-            className="hover:cursor-pointer"
-            onClick={toggleDropdown}
-          />
-          {isDropdownOpen && themes ? (
-            <div className="dropdown-menu">
-              <div className="dropdown-item">
-                <label htmlFor="theme">Select a theme:</label>
-                <br />
-                <select
-                  name="theme"
-                  id="theme"
-                  onChange={handleThemeChange}
-                  value={selectedTheme}
-                >
-                  {Object.entries(themes).map(([name, theme]) => (
-                    <option
-                      key={name}
-                      value={name}
-                      style={{
-                        backgroundColor: theme["--bg-color"],
-                        color: theme["--color_08"],
-                      }}
-                    >
-                      {theme.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          ) : null}
-        </div>
+      <div className="mr-8 flex items-center justify-center gap-4 relative">
+        <WifiIcon
+          fontSize="small"
+        />
+        <Battery80Icon className="rotate-90"
+        />
+        <ExpandMoreIcon
+          className="hover:cursor-pointer"
+          onClick={toggleDropdown}
+        />
       </div>
+      {isDropdownOpen && themes ? (
+        <div className="absolute right-0 top-8 bg-[var(--drop-down)] 
+            w-64 h-32 shadow-lg
+            p-4 rounded-b-xl z-100">
+          <div>
+            <label htmlFor="theme">Select a theme:</label>
+            <br />
+            <select
+              name="theme"
+              id="theme"
+              onChange={handleThemeChange}
+              className="w-full h-10 rounded-md
+              bg-[var(--bg-color)] p-3 mt-1 
+              cursor-pointer
+              "
+              value={selectedTheme}
+            >
+              {Object.entries(themes).map(([name, theme]) => (
+                <option
+                  key={name}
+                  value={name}
+                  style={{
+                    backgroundColor: theme["--bg-color"],
+                    color: theme["--color_08"],
+                  }}
+                >
+                  {theme.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

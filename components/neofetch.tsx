@@ -32,8 +32,8 @@ const Neofetch = () => {
           </p>
           <p>
             <span className="color-5">Tools</span>: GNU/Linux, Docker, VS Code, Git, AutoCAD{" "}
-            <span className="color-2">(cert. 2019)</span>, MSSQL{" "}
-            <span className="color-2">(cert. 2019)</span>
+            <span className="color-2 italic">(cert. 2019)</span>, MSSQL{" "}
+            <span className="color-2 italic">(cert. 2019)</span>
           </p>
           <div className="flex flex-row">
             <span className="color-5">Links</span>:
