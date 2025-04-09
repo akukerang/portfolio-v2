@@ -40,7 +40,7 @@ export default function RootLayout({
 
             {/* Main content container */}
             <div className="flex flex-col mt-8 items-center h-full">
-              <div className="flex flex-col min-w-[70%] color-8 h-screen">
+              <div className="flex flex-col w-full md:w-[70%] color-8 h-screen">
 
                 {/* Taskbar */}
                 <div className="relative flex w-full bg-[var(--task-bar)] items-center justify-between">
@@ -54,8 +54,8 @@ export default function RootLayout({
                 </div>
 
                 {/* Terminal Content */}
-                <div className="terminal-body overflow-y-auto overflow-x-hidden h-3/4
-                    flex flex-col justify-start items-start pt-4 px-8 bg-[var(--bg-color)]">
+                <div className="terminal-body overflow-y-auto overflow-x-hidden h-full md:h-[80%] 2xl:h-3/4
+                    flex flex-col justify-start items-start pt-4 px-8 bg-[var(--bg-color)] pb-10">
                   <Ls />
                   {children}
                 </div>

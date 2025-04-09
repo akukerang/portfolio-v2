@@ -29,15 +29,15 @@ const Neofetch = () => {
               in AI
             </p>
             <p>
-              <span className="color-5">Languages</span>: Python, JavaScript,
-              Java
+              <span className="color-5">Languages</span>: Python, TypeScript, JavaScript,
+              Go, Java
             </p>
             <p>
-              <span className="color-5">Frameworks/Libraries</span>: React,
-              Node.js, Pandas, Flask, Flutter
+              <span className="color-5">Frameworks/Libraries</span>: React, Next.js,
+              Node.js, Flask, Flutter, Pandas, NumPy, OpenCV, TensorFlow
             </p>
             <p>
-              <span className="color-5">Tools</span>: GNU/Linux, Git, AutoCAD{" "}
+              <span className="color-5">Tools</span>: GNU/Linux, Docker, VS Code, Git, AutoCAD{" "}
               <span className="color-2">(cert. 2019)</span>, MSSQL{" "}
               <span className="color-2">(cert. 2019)</span>
             </p>
