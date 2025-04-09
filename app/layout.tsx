@@ -1,9 +1,9 @@
 import "./globals.css";
 import DesktopTaskbar from "@/components/desktopTaskbar";
-import {AnimationProvider} from "@/helper/AnimationContext";
 import { ThemeProvider } from "@/helper/ThemeContext";
 import Ls from "@/components/ls";
 import type { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "gabe@dev",
   description: "Portfolio website of Gabriel Suoth, a software developer",
@@ -22,40 +22,44 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" type="image/png" href="/icon.png" />
-
       </head>
-      <body>
-        <div className="desktop">
-          <AnimationProvider>
+
+      <body className="h-screen overflow-hidden">
+        <div className="flex flex-col h-screen">
           <ThemeProvider>
             <DesktopTaskbar />
           </ThemeProvider>
-          <div className="terminal">
-            <div className="taskbar">
-              <div className="taskbar-title">gabe@dev</div>
-              <div className="taskbar-buttons">
-                <span className="taskbar-button" style={{ color: "var(--color_03)" }}>
-                  ⬤
-                </span>
-                <span className="taskbar-button" style={{ color: "var(--color_04)" }}>
-                  ⬤
-                </span>
-                <span className="taskbar-button" style={{ color: "var(--color_02)" }}>
-                  ⬤
-                </span>
+
+          {/* Main content container */}
+          <div className="flex flex-col mt-16 items-center h-full">
+            <div className="flex flex-col w-full md:w-[70%] color-8 h-screen">
+
+              {/* Taskbar */}
+              <div className="relative flex w-full bg-[var(--task-bar)] items-center justify-between rounded-t-lg">
+                <div className="ml-5"></div>
+                <div className="taskbar-title ml-auto mr-auto">gabe@dev</div>
+                <div className="flex flex-row gap-2 mr-5 items-center">
+                  <span className="hover:cursor-pointer color-3">⬤</span>
+                  <span className="hover:cursor-pointer color-4">⬤</span>
+                  <span className="hover:cursor-pointer color-2">⬤</span>
+                </div>
+              </div>
+
+              {/* Terminal Content */}
+              <div className="terminal-body overflow-y-auto overflow-x-hidden h-full md:h-[80%] 2xl:h-3/4
+                    flex flex-col justify-start items-start pt-4 px-8 bg-[var(--bg-color)] pb-10 rounded-b-lg shadow-2xl">
+                <Ls />
+                {children}
               </div>
             </div>
-            <div className="terminal-body">
-              <Ls />
-              {children}
-            </div>
           </div>
-          </AnimationProvider>
         </div>
-        
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ export default function NotFound() {
     return (
         <div className="not-found">
             <Command command={`cd ${pathname}`} />
-            <p>-bash: cd: ${pathname}: No such file or directory</p>
+            <p className='text-lg'>-bash: cd: ${pathname}: No such file or directory</p>
         </div>
     );
 }

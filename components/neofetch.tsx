@@ -1,66 +1,62 @@
-
 import React from "react";
-import "./neofetch.css";
 import Command from "./command";
-import useStepInterval from "../helper/useStepInterval";
-
 const Neofetch = () => {
-  const step = useStepInterval({maxStep: 2, time: 300});
-
   return (
     <div className="neofetch">
-      {step >= 1 && <Command command="neofetch" />}
-      {step >= 2 && (
-        <div className="neobody">
-          <div className="profile-pic">
-            <img
-              src="https://avatars.githubusercontent.com/u/22510552?v=4"
-              alt="pfp"
-            ></img>
-          </div>
-          <div className="info">
-            <h1 className="color-3">Gabriel Suoth</h1>
-            <h1>--------------------</h1>
-            <p>
-              <span className="color-5">Education</span>: Florida Atlantic
-              University
-            </p>
-            <p>
-              <span className="color-5">Major</span>: BS Computer Science, Minor
-              in AI
-            </p>
-            <p>
-              <span className="color-5">Languages</span>: Python, JavaScript,
-              Java
-            </p>
-            <p>
-              <span className="color-5">Frameworks/Libraries</span>: React,
-              Node.js, Pandas, Flask, Flutter
-            </p>
-            <p>
-              <span className="color-5">Tools</span>: GNU/Linux, Git, AutoCAD{" "}
-              <span className="color-2">(cert. 2019)</span>, MSSQL{" "}
-              <span className="color-2">(cert. 2019)</span>
-            </p>
-            <div className="links">
-              <span className="color-5">Links</span>:
-              <a className="first-link" href="mailto: gabrielsuoth@gmail.com">
+      <Command command="neofetch" />
+      <div className="flex flex-row text-lg my-4 mx-8">
+        <div className="hidden md:block md:w-1/3">
+          <img
+            src="https://avatars.githubusercontent.com/u/22510552?v=4"
+            alt="pfp"
+          ></img>
+        </div>
+        <div className="w-full md:w-2/3 md:ml-8 2xl:ml-16">
+          <h1 className="color-3 text-3xl">Gabriel Suoth</h1>
+          <h1>--------------------</h1>
+          <p>
+            <span className="color-5">Education</span>: Florida Atlantic
+            University
+          </p>
+          <p>
+            <span className="color-5">Major</span>: BS Computer Science, Minor
+            in AI
+          </p>
+          <p>
+            <span className="color-5">Languages</span>: Python, TypeScript, JavaScript,
+            Go, Java
+          </p>
+          <p>
+            <span className="color-5">Frameworks/Libraries</span>: React, Next.js,
+            Node.js, Tailwind, Flask, Flutter, Pandas, NumPy, OpenCV, TensorFlow
+          </p>
+          <p>
+            <span className="color-5">Tools</span>: GNU/Linux, Docker, VS Code, Git, AutoCAD{" "}
+            <span className="color-2 italic">(cert. 2019)</span>, MSSQL{" "}
+            <span className="color-2 italic">(cert. 2019)</span>
+          </p>
+          <div className="flex flex-row">
+            <span className="color-5">Links</span>:
+            <div className="flex flex-row gap-4 ml-3">
+              <a className="color-4 underline" href="mailto: gabrielsuoth@gmail.com">
                 Email
               </a>
-              <a href="https://www.github.com/akukerang">Github</a>
-              <a href="https://www.linkedin.com/in/gabriel-suoth/">Linkedin</a>
+              <a className="color-4 underline" href="https://www.github.com/akukerang">Github</a>
+              <a className="color-4 underline" href="https://www.linkedin.com/in/gabriel-suoth/">Linkedin</a>
+
             </div>
-            <div className="color-palette">
-              {[...Array(8)].map((_, i) => (
-                <div
-                  key={i + 1}
-                  className={`color-block bgcolor-${i + 1}`}
-                ></div>
-              ))}
-            </div>
+
+          </div>
+          <div className="flex flex-row mt-6">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i + 1}
+                className={`w-8 h-11 bgcolor-${i + 1}`}
+              ></div>
+            ))}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
