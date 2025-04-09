@@ -52,20 +52,22 @@ const ProjectInfo: React.FC<ProjectInfoProps> = ({ ProjectName }) => {
   return (
     <div className="projectInfo">
       <div className="flex flex-col lg:flex-row mt-2">
-        <div className='w-full lg:w-2/5'>
-          <Link href="/projects" className="lg:hidden color-6 underline text-xl">
-            Back
-          </Link>
-          {project.media && (project.media.images || project.media.videos) && (
+        {project.media && ((project.media.images || []).length > 0 || (project.media.videos || []).length > 0) && (
+
+          <div className='w-full lg:w-2/5'>
+            <Link href="/projects" className="lg:hidden color-6 underline text-xl">
+              Back
+            </Link>
             <Carousel
               items={[
-                ...(project.media.images?.map((src) => ({ type: "image" as const, src })) || []),
                 ...(project.media.videos?.map((src) => ({ type: "video" as const, src })) || []),
+                ...(project.media.images?.map((src) => ({ type: "image" as const, src })) || []),
               ]}
             />
-          )}
 
-        </div>
+          </div>
+        )}
+
         <div className="w-full lg:w-3/5 lg:ml-8 mt-2">
           <Link href="/projects" className="hidden lg:block color-6 underline text-xl">
             Back
