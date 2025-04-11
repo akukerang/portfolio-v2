@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 
 interface nowPlayingData {
+    error: string;
     song: string;
     artist: string;
     isPlaying: boolean;
@@ -15,7 +16,6 @@ const nowPlaying = () => {
             const res = await fetch('/api/nowPlaying')
             const json = await res.json()
             setData(json)
-            // console.log(json.song)
         }
         fetchData()
 
@@ -23,7 +23,7 @@ const nowPlaying = () => {
 
     return (
         <div>
-            {data ? `${data.artist} - ${data.song}` : "Loading..."}
+            {data && data.error == null ? `${data.artist} - ${data.song}` : "Nothing is playing"}
         </div>
     );
 };

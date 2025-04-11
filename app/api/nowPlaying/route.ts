@@ -32,11 +32,7 @@ export async function GET() {
         const response = await axios.get(url, { headers: header });
         const data = response.data;
         if (!data.is_playing || !data) {
-            return NextResponse.json({
-                song: "",
-                artist: "",
-                isPlaying: false,
-            });
+            return NextResponse.json({ error: "Nothing is playing" }, { status: 404 });
         }
         return NextResponse.json({
             song: data.item.name,
