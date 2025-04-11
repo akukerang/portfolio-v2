@@ -19,6 +19,7 @@ const Ls = () => {
         <LSItem name="About" link="/" active={pathname === "/"} />
         <LSItem name="Projects" link="/projects" active={pathname === "/projects"} />
         <LSItem name="Services" link="/services" active={pathname === "/services"} />
+        <LSItem name="Status" link="/status" active={pathname === "/status"} />
       </div>
 
     </div>
