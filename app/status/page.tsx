@@ -5,7 +5,7 @@ import StatusInfo from "@/components/statusInfo";
 // import NowPlaying from "@/components/nowPlaying";
 const Status = () => {
     return (
-        <div>
+        <div className="w-full">
             <Command command="htop" />
             <StatusInfo />
             <Command command="|" />
