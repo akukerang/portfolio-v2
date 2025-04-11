@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import Command from "@/components/command";
-import NowPlaying from "@/components/nowPlaying";
+import StatusInfo from "@/components/statusInfo";
+// import NowPlaying from "@/components/nowPlaying";
 const Status = () => {
     return (
         <div>
             <Command command="htop" />
-            <NowPlaying />
+            <StatusInfo />
             <Command command="|" />
         </div>
     );
