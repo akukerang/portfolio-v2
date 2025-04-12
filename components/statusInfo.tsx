@@ -40,11 +40,14 @@ const BarChart = ({ name, usage, max }: { name: string, usage: number, max: numb
 
 
 const StatusInfo = () => {
-    const [cpuUsage, setCPUUsage] = useState(50)
-    const [memoryUsage, setMemoryUsage] = useState(30)
-    const [memoryValues, setMemoryValues] = useState<number[]>([0, 0, 0, 0]);
-    const [cpuValues, setCPUValues] = useState<number[]>([0, 0, 0, 0]);
+    const [cpuUsage, setCPUUsage] = useState(48)
+    const [memoryUsage, setMemoryUsage] = useState(3148)
+    const [memoryValues, setMemoryValues] = useState<number[]>([1128, 432, 124, 84]);
+    const [cpuValues, setCPUValues] = useState<number[]>([15, 12, 5, 4]);
     const [playing, setPlaying] = useState("");
+    const [stars, setStars] = useState(0);
+    const [commits, setCommits] = useState(0);
+    const [year, setYear] = useState(new Date().getFullYear());
 
     const getRandomValue = (min: number, max: number) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -65,6 +68,20 @@ const StatusInfo = () => {
         }
     }
 
+    const getStats = async () => {
+        try {
+            const res = await fetch('/api/github');
+            const data = await res.json();
+            if (data.error) {
+                return null;
+            }
+            return { stars: data.stars, commits: data.commits };
+        } catch (error) {
+            console.error("Error fetching GitHub data:", error);
+            return null;
+        }
+    }
+
 
     useEffect(() => {
         const fetchNowPlaying = async () => {
@@ -72,6 +89,14 @@ const StatusInfo = () => {
             setPlaying(nowPlaying);
         };
         fetchNowPlaying();
+        const fetchStats = async () => {
+            const stats = await getStats();
+            if (stats) {
+                setStars(stats.stars);
+                setCommits(stats.commits);
+            }
+        }
+        fetchStats();
         const interval = setInterval(() => {
             const cpuValues =
                 [
@@ -122,11 +147,8 @@ const StatusInfo = () => {
                 <StatusItem pid="001" task="work" status="RUNNING" cpu={cpuValues[0]} mem={memoryValues[0]} info="Testing" />
                 <StatusItem pid="002" task="now-playing" status={playing !== "" ? "RUNNING" : "IDLE"}
                     cpu={cpuValues[1]} mem={memoryValues[1]} info={playing !== "" ? playing : "Nothing playing"} />
-                <StatusItem pid="003" task="last-commit" status="IDLE" cpu={cpuValues[2]} mem={memoryValues[2]} info="Testing" />
-                <StatusItem pid="004" task="commits" status="IDLE" cpu={cpuValues[3]} mem={memoryValues[3]} info="Testing" />
-
-
-
+                <StatusItem pid="003" task="github-stars" status="IDLE" cpu={cpuValues[2]} mem={memoryValues[2]} info={`${stars} stars`} />
+                <StatusItem pid="004" task="github-commits" status="IDLE" cpu={cpuValues[3]} mem={memoryValues[3]} info={`${commits} commits (${year})`} />
             </div>
             <div>
 
