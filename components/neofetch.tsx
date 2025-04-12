@@ -15,6 +15,9 @@ const Neofetch = () => {
           <h1 className="color-3 text-3xl">Gabriel Suoth</h1>
           <h1>--------------------</h1>
           <p>
+            <span className="color-5">Location</span>: West Palm Beach, FL
+          </p>
+          <p>
             <span className="color-5">Education</span>: Florida Atlantic
             University
           </p>

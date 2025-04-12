@@ -16,7 +16,7 @@ const Command: React.FC<CommandProps> = (params) => {
           |
         </span>
       ) : (
-        <span className="command-body">{params.command}</span>
+        params.command
       )}
     </p>
   );
