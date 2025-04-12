@@ -1,30 +1,13 @@
-import { useEffect, useState } from "react";
-
-
-interface nowPlayingData {
-    error: string;
-    song: string;
-    artist: string;
-    isPlaying: boolean;
-}
-
-const nowPlaying = () => {
-    const [data, setData] = useState<nowPlayingData | null>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch('/api/nowPlaying')
-            const json = await res.json()
-            setData(json)
+export async function getNowPlaying(): Promise<string> {
+    try {
+        const res = await fetch('/api/nowPlaying');
+        const data = await res.json();
+        if (data.error || !data.isPlaying) {
+            return "";
         }
-        fetchData()
-
-    }, [])
-
-    return (
-        <div>
-            {data && data.error == null ? `${data.artist} - ${data.song}` : "Nothing is playing"}
-        </div>
-    );
-};
-export default nowPlaying;
+        return `${data.artist} - ${data.song}`;
+    } catch (error) {
+        console.error("Error fetching now playing data:", error);
+        return "";
+    }
+}
