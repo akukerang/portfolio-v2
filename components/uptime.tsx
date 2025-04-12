@@ -11,8 +11,8 @@ const Uptime = () => {
         setUptime(`${years} years, ${days % 365} days`);
     }, []);
     return (
-        <div >
-            Uptime: <span className="text-sm">{uptime}</span>
+        <div className="color-2">
+            Uptime: <span className="text-sm color-8">{uptime}</span>
         </div>
     )
 };

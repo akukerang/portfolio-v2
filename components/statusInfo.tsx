@@ -12,15 +12,15 @@ interface StatusItemProps {
 const StatusItem = ({ pid, task, status, cpu, mem, info }: StatusItemProps) => {
     return (
         <div className="flex flex-row px-4">
-            <h1 className="w-[7%]">{pid}</h1>
-            <h1 className="w-[25%]">{task}</h1>
-            <h1 className="w-[15%]">{status}</h1>
-            <h1 className="w-[10%]">{cpu}%</h1>
-            <h1 className="w-[10%]">{mem}MB</h1>
-            <h1 className="w-[33%]">{info}</h1>
+            <h1 className="w-[7%] min-w-[50px] truncate">{pid}</h1>
+            <h1 className="w-[45%] md:w-[25%] min-w-[100px] truncate">{task}</h1>
+            <h1 className="hidden md:block w-[15%] min-w-[80px] truncate">{status}</h1>
+            <h1 className="hidden md:block w-[10%] min-w-[60px] truncate">{cpu}%</h1>
+            <h1 className="hidden md:block w-[10%] min-w-[60px] truncate">{mem}MB</h1>
+            <h1 className="w-[45%] md:w-[33%] min-w-[150px] truncate">{info}</h1>
         </div>
     );
-}
+};
 
 
 const BarChart = ({ name, usage, max }: { name: string, usage: number, max: number }) => {
@@ -32,7 +32,11 @@ const BarChart = ({ name, usage, max }: { name: string, usage: number, max: numb
         "█".repeat(filledBlocks) + "-".repeat(emptyBlocks);
     return (
         <div>
-            {`${name}: [${bar}] ${(percent * 100).toFixed(2)}%`}
+
+            <span className="color-4">{`${name}: `}</span>
+
+            <span className="hidden md:inline-block">{`[${bar}]`}</span>
+            {` ${(percent * 100).toFixed(0)}%`}
         </div>
     );
 };
@@ -47,7 +51,7 @@ const StatusInfo = () => {
     const [playing, setPlaying] = useState("");
     const [stars, setStars] = useState(0);
     const [commits, setCommits] = useState(0);
-    const [year, setYear] = useState(new Date().getFullYear());
+    const year = new Date().getFullYear();
 
     const getRandomValue = (min: number, max: number) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -123,9 +127,9 @@ const StatusInfo = () => {
 
 
     return (
-        <div className="mt-2 border-2 border-gray-300 rounded-sm py-4 w-full">
+        <div className="text-base mt-2 border-1 border-[var(--color_08)] rounded-sm py-4 w-full mb-2">
             <div className="flex flex-row justify-between px-4 ">
-                <h1>System Status: gabeOS</h1>
+                <h1><span className="color-2">System Status:</span> gabeOS</h1>
                 <Uptime />
             </div>
             <div className="flex flex-row gap-8 mt-1 px-4">
@@ -137,14 +141,14 @@ const StatusInfo = () => {
             <div>
                 {/* Main Content */}
                 <div className="mt-2 flex flex-row px-4 bg-[var(--color_08)] text-[var(--bg-color)]">
-                    <h1 className="w-[7%]">PID</h1>
-                    <h1 className="w-[25%]">TASK NAME</h1>
-                    <h1 className="w-[15%]">STATUS</h1>
-                    <h1 className="w-[10%]">CPU</h1>
-                    <h1 className="w-[10%]">MEM</h1>
-                    <h1 className="w-[33%]">INFO</h1>
+                    <h1 className="w-[7%] min-w-[50px] truncate">PID</h1>
+                    <h1 className="w-[45%] md:w-[25%] min-w-[100px] truncate">TASK NAME</h1>
+                    <h1 className="hidden md:block w-[15%] min-w-[80px] truncate">STATUS</h1>
+                    <h1 className="hidden md:block w-[10%] min-w-[60px] truncate">CPU</h1>
+                    <h1 className="hidden md:block w-[10%] min-w-[60px] truncate">MEM</h1>
+                    <h1 className="w-[45%] md:w-[33%] min-w-[150px] truncate">INFO</h1>
                 </div>
-                <StatusItem pid="001" task="work" status="RUNNING" cpu={cpuValues[0]} mem={memoryValues[0]} info="Testing" />
+                <StatusItem pid="001" task="work" status="RUNNING" cpu={cpuValues[0]} mem={memoryValues[0]} info="Student" />
                 <StatusItem pid="002" task="now-playing" status={playing !== "" ? "RUNNING" : "IDLE"}
                     cpu={cpuValues[1]} mem={memoryValues[1]} info={playing !== "" ? playing : "Nothing playing"} />
                 <StatusItem pid="003" task="github-stars" status="IDLE" cpu={cpuValues[2]} mem={memoryValues[2]} info={`${stars} stars`} />
