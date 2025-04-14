@@ -4,8 +4,13 @@ import React from "react";
 import Command from "@/components/command";
 import ProjectInfo from "@/components/projectInfo";
 
+
+
 const ProjectPage = () => {
   const params = useParams();
+  if (!params) {
+    return <div>Error: Project not found</div>;
+  }
   const commandString = `cat ${params.name}`;
   return (
     <div>
