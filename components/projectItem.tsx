@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import DescriptionIcon from '@mui/icons-material/Description';
 interface ProjectItemProps {
   name: string;
   description: string;
@@ -10,17 +11,23 @@ const ProjectItem: React.FC<ProjectItemProps> = (params) => {
   const { name, description, date, lang } = params;
   return (
     <div className="text-base my-1">
-      {"| "}
-      <span className="color-8">{date}</span>
-      {" | "}
+
+      <span className="color-8 hidden lg:inline">
+        {`| ${date} | `}
+      </span>
       <Link href={`/projects/${name}`}>
-        <span className="color-5 text-lg hover:underline">{name}</span>
+        <span className="color-5 text-lg hover:underline"><DescriptionIcon fontSize='inherit' className='mr-1' />{`${name}`}</span>
       </Link>
       {" | "}
       <span className="color-3 italic">{description}</span>
-      {" | "}
-      <span className="color-2">{lang}</span>
-      {" |"}
+
+      <span className="color-8 hidden lg:inline">
+        {" | "}
+        <span className="color-2">
+          {lang}
+        </span>
+        {" | "}
+      </span>
     </div>
   );
 };

@@ -28,6 +28,9 @@ const TitleScreen = () => {
             <p className="text-lg">
                 Press Enter to start the game
             </p>
+            <p className="text-lg">
+                Control with arrow keys
+            </p>
         </>
 
     );
@@ -148,13 +151,13 @@ const Snake = () => {
     }, [direction, gameStart, food, gameOver]);
 
     return (
-        <div className="mt-2 p-4 font-mono text-lg border-2 border-[var(--color_08)] rounded-sm w-full h-4/5">
+        <div className="mt-2 p-4 font-[Gohu] text-lg border-2 border-[var(--color_08)] rounded-sm w-full h-4/5">
             <div className="flex flex-col text-center justify-center h-full">
                 {gameOver ? (
                     <GameOverScreen score={score} />
                 ) : gameStart ? (
                     <>
-                        <h1>Score {score}</h1>
+                        <h1>Score: {score}</h1>
 
                         <div className="grid grid-cols-20 grid-rows-20 w-full h-full">
                             {
