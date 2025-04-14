@@ -145,7 +145,7 @@ const StatusInfo = () => {
                     <h1 className="w-[45%] md:w-[25%] min-w-[100px] truncate">TASK NAME</h1>
                     <h1 className="hidden md:block w-[15%] min-w-[80px] truncate">STATUS</h1>
                     <h1 className="hidden md:block w-[10%] min-w-[60px] truncate">CPU</h1>
-                    <h1 className="hidden md:block w-[10%] min-w-[60px] truncate">MEM</h1>
+                    <h1 className="hidden md:block w-[10%] min-w-[0px] truncate">MEM</h1>
                     <h1 className="w-[45%] md:w-[33%] min-w-[150px] truncate">INFO</h1>
                 </div>
                 <StatusItem pid="001" task="work" status="RUNNING" cpu={cpuValues[0]} mem={memoryValues[0]} info="Student" />

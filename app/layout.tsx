@@ -54,7 +54,7 @@ export default function RootLayout({
 
               {/* Terminal Content */}
               <div className="terminal-body overflow-y-auto overflow-x-hidden h-full md:h-[80%] 2xl:h-3/4
-                    flex flex-col justify-start items-start pt-4 px-8 bg-[var(--bg-color)] pb-10 rounded-b-lg shadow-2xl">
+                    flex flex-col justify-start items-start pt-4 px-8 bg-[var(--bg-color)] pb-16 rounded-b-lg shadow-2xl">
                 <Ls />
                 {children}
               </div>
