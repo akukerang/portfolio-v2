@@ -1,7 +1,7 @@
 import React from "react";
 import Command from "@/components/command";
 import GameList from "@/components/GameList";
-const Games = () => {
+const GamesPage = () => {
     return (
         <div className="w-full h-full overflow-hidden">
             <Command filePath="" command="cd Games" />
@@ -11,4 +11,4 @@ const Games = () => {
         </div>
     );
 };
-export default Games;
+export default GamesPage;
