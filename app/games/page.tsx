@@ -6,6 +6,7 @@ const Games = () => {
         <div className="w-full h-full overflow-hidden">
             <Command filePath="" command="cd Games" />
             <Command filePath="Games" command="ls -l" />
+            <p>Click on a game to start playing</p>
             <GameList />
         </div>
     );

@@ -62,7 +62,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ score }) => {
                 Score: {score}
             </p>
             <p className="text-lg">
-                Press Enter to start the game
+                Press Enter to play again
             </p>
         </>
     );

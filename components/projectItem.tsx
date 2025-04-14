@@ -21,7 +21,7 @@ const ProjectItem: React.FC<ProjectItemProps> = (params) => {
       {" | "}
       <span className="color-3 italic">{description}</span>
 
-      <span className="color-8 hidden lg:inline">
+      <span className="color-8 hidden 2xl:inline">
         {" | "}
         <span className="color-2">
           {lang}

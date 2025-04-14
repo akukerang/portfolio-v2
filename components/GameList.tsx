@@ -1,17 +1,14 @@
 import Link from "next/link";
-
+import CodeIcon from '@mui/icons-material/Code';
 interface GameItemProps {
     name: string;
-    link: string;
 }
 
-const GameItem: React.FC<GameItemProps> = ({ name, link }) => {
+const GameItem: React.FC<GameItemProps> = ({ name }) => {
     return (
-        <div className="text-lg hover:cursor-pointer color-5 hover:underline ">
-            <Link href={`/games/${link}`}>
-                {name}
-            </Link>
-        </div>
+        <Link href={`/games/${name}`}>
+            <span className="color-5 text-lg hover:underline"><CodeIcon fontSize='inherit' className='mr-1' />{`${name}.py`}</span>
+        </Link>
     )
 }
 
@@ -19,7 +16,7 @@ const GameItem: React.FC<GameItemProps> = ({ name, link }) => {
 const GameList = () => {
     return (
         <div className="flex flex-col">
-            <GameItem name="snake.py" link="snake" />
+            <GameItem name="snake" />
 
         </div>
     );
