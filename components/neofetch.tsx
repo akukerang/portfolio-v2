@@ -31,10 +31,10 @@ const Neofetch = () => {
           </p>
           <p>
             <span className="color-5">Frameworks/Libraries</span>: React, Next.js,
-            Node.js, Tailwind, Flask, Flutter, Pandas, NumPy, OpenCV, TensorFlow
+            Node.js, Tailwind, Flask, Flutter, Pandas, TensorFlow
           </p>
           <p>
-            <span className="color-5">Tools</span>: GNU/Linux, Docker, VS Code, Git, AutoCAD{" "}
+            <span className="color-5">Tools</span>: Linux, Docker, Git, AutoCAD{" "}
             <span className="color-2 italic">(cert. 2019)</span>, MSSQL{" "}
             <span className="color-2 italic">(cert. 2019)</span>
           </p>
@@ -44,7 +44,7 @@ const Neofetch = () => {
               <a className="color-4 underline" href="mailto: gabrielsuoth@gmail.com">
                 Email
               </a>
-              <a className="color-4 underline" href="https://www.github.com/akukerang">Github</a>
+              <a className="color-4 underline" href="https://www.gitub.com/akukerang">GitHub</a>
               <a className="color-4 underline" href="https://www.linkedin.com/in/gabriel-suoth/">Linkedin</a>
 
             </div>
