@@ -3,7 +3,7 @@ import Command from "@/components/command";
 import Snake from "@/components/Snake";
 const Games = () => {
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-full overflow-hidden">
             <Command filePath="" command="cd Games" />
             <Command filePath="Games" command="python snake.py" />
             <Snake />
