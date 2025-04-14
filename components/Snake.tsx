@@ -21,10 +21,15 @@ const TitleScreen = () => {
     `;
 
     return (
-        <pre className="whitespace-pre">
-            {title}
-            {"Press Enter to start the game"}
-        </pre>
+        <>
+            <pre className="whitespace-pre overflow-clip text-xs">
+                {title}
+            </pre>
+            <p className="text-lg">
+                Press Enter to start the game
+            </p>
+        </>
+
     );
 }
 
@@ -44,10 +49,14 @@ const GameOverScreen = () => {
       ░       ░  ░       ░      ░  ░       ░ ░        ░     ░  ░   ░     
     `;
     return (
-        <pre className="whitespace-pre">
-            {gameOverTitle}
-            {"Press Enter to restart the game"}
-        </pre>
+        <>
+            <pre className="whitespace-pre overflow-clip text-xs">
+                {gameOverTitle}
+            </pre>
+            <p className="text-lg">
+                Press Enter to start the game
+            </p>
+        </>
     );
 }
 
@@ -134,7 +143,7 @@ const Snake = () => {
     }, [direction, gameStart, food, gameOver]);
 
     return (
-        <div className="mt-2 p-4 font-mono text-base border-2 border-[var(--color_08)] rounded-sm w-4/5 h-4/5">
+        <div className="mt-2 p-4 font-mono text-lg border-2 border-[var(--color_08)] rounded-sm w-4/5 h-4/5">
             <div className="flex flex-col text-center justify-center h-full">
                 {gameOver ? (
                     <GameOverScreen />
@@ -148,7 +157,6 @@ const Snake = () => {
                                     const x = index % gridSize;
                                     const y = Math.floor(index / gridSize);
                                     const isSnake = snake.some((part) => part[0] === x && part[1] === y);
-                                    const isHead = snake[0][0] === x && snake[0][1] === y;
                                     const isFood = food[0] === x && food[1] === y;
                                     return (
                                         <div
