@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 const gridSize = 20;
@@ -15,12 +15,73 @@ const Snake = () => {
     const [gameOver, setGameOver] = useState(false);
 
     const title = `
-    ███████ ███    ██  █████  ██   ██ ███████
-    ██      ████   ██ ██   ██ ██  ██  ██     
-    ███████ ██ ██  ██ ███████ █████   █████  
-         ██ ██  ██ ██ ██   ██ ██  ██  ██     
-    ███████ ██   ████ ██   ██ ██   ██ ███████
+   ▄████████ ███▄▄▄▄      ▄████████    ▄█   ▄█▄    ▄████████ 
+  ███    ███ ███▀▀▀██▄   ███    ███   ███ ▄███▀   ███    ███ 
+  ███    █▀  ███   ███   ███    ███   ███▐██▀     ███    █▀  
+  ███        ███   ███   ███    ███  ▄█████▀     ▄███▄▄▄     
+▀███████████ ███   ███ ▀███████████ ▀▀█████▄    ▀▀███▀▀▀     
+         ███ ███   ███   ███    ███   ███▐██▄     ███    █▄  
+   ▄█    ███ ███   ███   ███    ███   ███ ▀███▄   ███    ███ 
+ ▄████████▀   ▀█   █▀    ███    █▀    ███   ▀█▀   ██████████ 
+                                      ▀                      
     `;
+
+    const gameOverTitle = `
+  ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███  
+ ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
+▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
+░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄  
+░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒
+ ░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░   ░ ▒░▒░▒░    ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░
+  ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░  ░▒ ░ ▒░
+░ ░   ░   ░   ▒   ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░ 
+      ░       ░  ░       ░      ░  ░       ░ ░        ░     ░  ░   ░     
+    `;
+
+
+    // * Controls
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (!gameStart && event.key === "Enter") { // Start Game
+                setGameStart(true);
+                setDirection([1, 0]);
+                return;
+            }
+            if (gameStart) { // Game started check for movement controls
+                switch (event.key) {
+                    case "ArrowUp":
+                        setDirection([0, -1]);
+                        break;
+                    case "ArrowDown":
+                        setDirection([0, 1]);
+                        break;
+                    case "ArrowLeft":
+                        setDirection([-1, 0]);
+                        break;
+                    case "ArrowRight":
+                        setDirection([1, 0]);
+                        break;
+                }
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [direction, gameStart]);
+
+    // * Game Loop
+    useEffect(() => {
+        if (gameStart && !gameOver) {
+
+
+        }
+
+
+
+
+    }, [direction, gameStart, food, gameOver]);
+
 
 
 
