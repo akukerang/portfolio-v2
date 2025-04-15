@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/helper/ThemeContext";
 import Ls from "@/components/ls";
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Background from "@/components/Background";
 
 export const metadata: Metadata = {
   title: "gabe@dev",
@@ -32,6 +33,7 @@ export default function RootLayout({
       </head>
 
       <body className="h-screen overflow-hidden">
+        <Background />
         <div className="flex flex-col h-screen">
           <ThemeProvider>
             <DesktopTaskbar />

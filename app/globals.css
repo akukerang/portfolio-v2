@@ -120,13 +120,13 @@ body {
 }
 
 
-html {
+/* html {
   background-color: var(--bg-color);
   background-image: url('https://github.com/akukerang/akukerang/blob/main/mountain.png?raw=true');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-}
+} */
 
 .cursor {
   background-color: var(--color_08);
