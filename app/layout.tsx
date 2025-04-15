@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   title: "gabe@dev",
   description: "Portfolio website of Gabriel Suoth, a software developer",
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
+    icon: "/icon.ico",
+    shortcut: "/icon.ico",
+    apple: "/icon.ico",
   },
 };
 
