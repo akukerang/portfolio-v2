@@ -34,7 +34,6 @@ const TypingTest = () => {
     const [userInput, setUserInput] = useState<string[]>([]);
     const [currInput, setCurrInput] = useState("");
 
-    const [visibleWord, setVisibleWord] = useState(0);
 
     // * Notes
     // If character is correct, display character
@@ -117,8 +116,72 @@ const TypingTest = () => {
                     onKeyDown={handleKeyDown}
                     className="opacity-0 absolute top-0 left-0 h-full w-full"
                 />
-                <div>
 
+                <div
+                    className="flex flex-wrap mx-auto items-center text-center text-xl"
+                >
+                    {words.map((word, index) => {
+                        let className = "mr-2";
+
+                        // Completed Words
+                        if (index < currWordIndex) {
+                            const typed = userInput[index] || "";
+                            return (
+                                <span key={index} className={className}>
+                                    {word.split("").map((char, i) => {
+                                        const color =
+                                            typed[i] === char
+                                                ? "text-green-500"
+                                                : "text-red-500";
+                                        return (
+                                            <span key={i} className={color}>
+                                                {char}
+                                            </span>
+                                        );
+                                    })}
+                                </span>
+                            );
+                        }
+                        // Current Words
+                        if (index === currWordIndex) {
+                            return (
+                                <span key={index} className={className}>
+                                    {word.split("").map((char, i) => {
+                                        let color = "";
+                                        if (i < currInput.length) {
+                                            color =
+                                                currInput[i] === char
+                                                    ? "text-green-500"
+                                                    : "text-red-500";
+                                        }
+                                        return (
+                                            <span key={i} className={color}>
+                                                {char}
+                                            </span>
+                                        );
+                                    })}
+                                    {currInput.length > word.length &&
+                                        currInput
+                                            .slice(word.length)
+                                            .split("")
+                                            .map((char, j) => (
+                                                <span
+                                                    key={`extra-${j}`}
+                                                    className="text-red-500 underline"
+                                                >
+                                                    {char}
+                                                </span>
+                                            ))}
+                                </span>
+                            );
+                        }
+                        // Other
+                        return (
+                            <span key={index} className={className}>
+                                {word}
+                            </span>
+                        );
+                    })}
                 </div>
             </div>
         </div>
