@@ -8,7 +8,11 @@ interface ResultProps {
 }
 
 const ResultScreen: React.FC<ResultProps> = ({ wpm, acc }) => {
-    return <></>
+    return <div>
+        <h1>Results</h1>
+        {wpm}
+        {acc}
+    </div>
 }
 
 
@@ -17,13 +21,21 @@ const ResultScreen: React.FC<ResultProps> = ({ wpm, acc }) => {
 
 const TypingTest = () => {
     const [gameStart, setGameStart] = useState(false);
-    const [userInput, setUserInput] = useState("");
+    const [timer, setTimer] = useState(30);
+
     const [wpm, setWPM] = useState(0);
     const [acc, setAcc] = useState(0);
-    const [timer, setTimer] = useState(30);
-    const [paragraph, setParagraph] = useState<string>(paragraphs.paragraphs[Math.floor(Math.random() * paragraphs.paragraphs.length)]);
+
+    const paragraph = paragraphs.paragraphs[Math.floor(Math.random() * paragraphs.paragraphs.length)];
+    const words = paragraph.split(" ");
+    const [currWordIndex, setCurrWordIndex] = useState(0);
 
     const inputRef = useRef<HTMLInputElement>(null);
+    const [userInput, setUserInput] = useState<string[]>([]);
+    const [currInput, setCurrInput] = useState("");
+
+    const [visibleWord, setVisibleWord] = useState(0);
+
     // * Notes
     // If character is correct, display character
     // If incorrect and on a character, display red correct character
@@ -36,22 +48,62 @@ const TypingTest = () => {
     // When time runs out display result screen.
     // WPM = 
     // ACC = (correct characters / total characters) * 100
+
+
+    // * Timer Loop
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (gameStart && timer > 0) {
+            interval = setInterval(() => {
+                setTimer(timer => timer - 1);
+            }, 1000);
+        } else if (timer == 0) {
+            setGameStart(false);
+            // Calculate WPM and ACC
+
+        }
+        return () => clearInterval(interval);
+    }, [gameStart, timer])
+
+    // * Key Handler
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (!gameStart) {
             setGameStart(true);
             inputRef.current?.focus();
         }
-        if (gameStart) {
-            if (e.key === "Backspace") {
-                setUserInput(userInput.slice(0, -1));
-            } else if (e.key.length === 1) {
-                setUserInput(userInput + e.key);
+        const currentWord = words[currWordIndex];
+        if (e.key === " ") { // Space, go to next word
+            if (currInput.length > 0) { // Only allow if input not empty
+                setUserInput(prev => [...prev, currInput])
+                setCurrWordIndex(prev => prev + 1);
+                setCurrInput("");
             }
-            console.log(userInput);
-
+            e.preventDefault(); // Don't add space
+        } else if (e.key == "Backspace") {
+            if (currInput.length > 0) { // Backspace to remove character
+                setCurrInput(currInput.slice(0, -1));
+            } else if (currWordIndex > 0) { // Backspace to previous word
+                const previousWord = userInput[currWordIndex - 1];
+                const actualWord = words[currWordIndex - 1];
+                if (previousWord !== actualWord) { // Don't allow to backspace if correct
+                    setCurrWordIndex(currWordIndex - 1);
+                    setCurrInput(previousWord);
+                    setUserInput(userInput.slice(0, -1));
+                }
+            }
+        } else if (e.key.length === 1) {
+            const wrongCount = [...currInput].filter((char, i) => char !== currentWord[i]).length;
+            if (wrongCount <= 8) {
+                setCurrInput(currInput + e.key);
+            }
         }
     }
 
+    if (timer === 0) {
+        return (
+            <ResultScreen wpm={wpm} acc={acc} />
+        )
+    }
 
 
     return (
@@ -59,17 +111,14 @@ const TypingTest = () => {
             <h1 className="text-2xl color-4 mx-auto">Typing Test</h1>
             <h1 className="text-2xl color-7 mx-auto">{timer}</h1>
 
-            <div className="overflow-hidden text-xl mx-16 mb-8 relative">
-                <input ref={inputRef} onKeyDown={handleKeyDown} className="opacity-0 absolute top-0 left-0 h-full w-full" />
-                <div
-                    className="overflow-hidden whitespace-pre-wrap"
-                    style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 3,
-                    }}
-                >
-                    {paragraph}
+            <div className="text-xl mx-16 mb-8 relative">
+                <input
+                    ref={inputRef}
+                    onKeyDown={handleKeyDown}
+                    className="opacity-0 absolute top-0 left-0 h-full w-full"
+                />
+                <div>
+
                 </div>
             </div>
         </div>
