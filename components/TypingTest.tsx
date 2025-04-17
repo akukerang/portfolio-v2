@@ -100,9 +100,9 @@ const TypingTest = () => {
                     setUserInput(userInput.slice(0, -1));
                 }
             }
-        } else if (e.key.length === 1) {
+        } else if (e.key.length >= 1) {
             const wrongCount = [...currInput].filter((char, i) => char !== currentWord[i]).length;
-            if (wrongCount <= 8) {
+            if (wrongCount <= 10) {
                 setCurrInput(currInput + e.key);
             }
         }
