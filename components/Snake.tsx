@@ -139,6 +139,12 @@ const Snake = () => {
                     let newSnake = [newHead, ...prevSnake];
                     if (newHead[0] === food[0] && newHead[1] === food[1]) { // Check if food eaten
                         setScore((prevScore) => prevScore + 1);
+                        let newX = Math.floor(Math.random() * gridSize);
+                        let newY = Math.floor(Math.random() * gridSize);
+                        while (newSnake.some((part) => part[0] === newX && part[1] === newY)) { // Check if food spawns on snake
+                            newX = Math.floor(Math.random() * gridSize);
+                            newY = Math.floor(Math.random() * gridSize);
+                        }
                         setFood([Math.floor(Math.random() * gridSize), Math.floor(Math.random() * gridSize)]);
                     } else {
                         newSnake.pop();
@@ -170,10 +176,10 @@ const Snake = () => {
                                         <div
                                             key={index}
                                             className={`aspect-square w-full h-full 
-                                                ${isSnake
-                                                    ? "bg-[var(--color_08)]"
-                                                    : isFood
-                                                        ? "bg-[var(--color_02)]" : null
+                                                ${isFood
+                                                    ? "bg-[var(--color_02)]"
+                                                    : isSnake
+                                                        ? "bg-[var(--color_08)]" : null
                                                 }`}
                                         />
                                     );

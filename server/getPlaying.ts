@@ -20,12 +20,6 @@ async function getAccessToken() {
     return response.data.access_token
 }
 
-interface PlayingProps {
-    error?: string;
-    song: string;
-    artist: string;
-}
-
 export default async function getPlaying() {
     try {
         const accessToken = await getAccessToken();
