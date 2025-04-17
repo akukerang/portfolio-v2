@@ -137,7 +137,7 @@ const TypingTest = () => {
                                         <span key={globalWordIndex} className={className}>
                                             {word.split("").map((char, i) => {
                                                 const color =
-                                                    typed[i] === char ? "text-green-500" : "text-red-500";
+                                                    typed[i] === char ? "color-3" : "color-2";
                                                 return (
                                                     <span key={i} className={color}>
                                                         {char}
@@ -155,10 +155,10 @@ const TypingTest = () => {
                                             {word.split("").map((char, i) => {
                                                 let color = "";
                                                 if (i < currInput.length) {
-                                                    color = currInput[i] === char ? "text-green-500" : "text-red-500";
+                                                    color = currInput[i] === char ? "color-3" : "color-2";
                                                 }
                                                 if (i === currInput.length) {
-                                                    color = "color-1 cursor";
+                                                    color = "color-1 cursor animate-blink-text";
                                                 }
                                                 return (
                                                     <span key={i} className={color}>
@@ -175,7 +175,7 @@ const TypingTest = () => {
                                                     .map((char, j) => (
                                                         <span
                                                             key={`extra-${j}`}
-                                                            className="text-red-500 underline"
+                                                            className="color-2 underline"
                                                         >
                                                             {char}
                                                         </span>

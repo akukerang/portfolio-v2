@@ -2,19 +2,39 @@
 
 @theme {
   --animate-blink: blink 1.5s step-end infinite;
+  --animate-blink-text: blink-text 1.5s step-end infinite;
 
   @keyframes blink {
 
     from,
     to {
       opacity: 1;
+
     }
 
     50% {
       opacity: 0;
     }
   }
+
+  @keyframes blink-text {
+
+    from,
+    to {
+      background-color: var(--color_08);
+      color: var(--color_01);
+    }
+
+    50% {
+
+      background-color: transparent;
+      color: var(--color_08);
+    }
+  }
 }
+
+
+
 
 @font-face {
   font-family: 'Gohu';
