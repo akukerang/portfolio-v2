@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, use } from "react";
-import paragraphs from "@/data/paragraph.json";
+import WordSet from "../data/english_5k.json";
 
 interface ResultProps {
     wpm: number;
@@ -23,8 +23,12 @@ const TypingTest = () => {
     const [wpm, setWPM] = useState(0);
     const [acc, setAcc] = useState(0);
 
-    const paragraph = paragraphs.paragraphs[Math.floor(Math.random() * paragraphs.paragraphs.length)];
-    const words = paragraph.split(" ");
+
+    const words = [...WordSet.words]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 400);
+
+
     const [currWordIndex, setCurrWordIndex] = useState(0);
 
     const inputRef = useRef<HTMLInputElement>(null);
