@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, use } from "react";
 import paragraphs from "@/data/paragraph.json";
 
 interface ResultProps {
@@ -14,9 +14,6 @@ const ResultScreen: React.FC<ResultProps> = ({ wpm, acc }) => {
         {acc}
     </div>
 }
-
-
-
 
 
 const TypingTest = () => {
@@ -34,20 +31,29 @@ const TypingTest = () => {
     const [userInput, setUserInput] = useState<string[]>([]);
     const [currInput, setCurrInput] = useState("");
 
+    const [lines, setLines] = useState<string[]>([]);
+    const wordsPerLine = 10
+    const [visibleLine, setVisibleLines] = useState([0, 3]);
 
-    // * Notes
-    // If character is correct, display character
-    // If incorrect and on a character, display red correct character
-    // If incorrect and on a space, display wrong character
-    // When completed a word correctly, don't allow to go back to the space after that word or word
-    // Handle test word by word, rather than by character by character
-    // Only display 3 lines of paragraph at a time, display next line when reached.
-    // If the user presses backspace, remove the last character from the input
-    // Only allow 8 maximum wrong characters per word (aka w/o space)
-    // When time runs out display result screen.
-    // WPM = 
-    // ACC = (correct characters / total characters) * 100
+    // Converts Word Array to Lines per 10 words
+    useEffect(() => {
+        let newLines = [];
+        for (let i = 0; i < words.length; i += wordsPerLine) {
+            newLines.push(words.slice(i, i + wordsPerLine).join(" "));
+        }
+        setLines(newLines);
+    }, []);
 
+    // Visible line handler
+    useEffect(() => {
+        const currentLine = Math.floor(currWordIndex / wordsPerLine);
+        // When ending second last line, show the next line
+        if (currentLine >= visibleLine[1] - 1) {
+            const newStartLine = Math.max(0, currentLine - 1); // Show previous
+            const newEndLine = Math.min(lines.length, currentLine + 2); // Show the current and next line
+            setVisibleLines([newStartLine, newEndLine]);
+        }
+    }, [currWordIndex, lines.length]);
 
     // * Timer Loop
     useEffect(() => {
@@ -98,11 +104,11 @@ const TypingTest = () => {
         }
     }
 
-    if (timer === 0) {
-        return (
-            <ResultScreen wpm={wpm} acc={acc} />
-        )
-    }
+    // if (timer === 0) {
+    //     return (
+    //         <ResultScreen wpm={wpm} acc={acc} />
+    //     )
+    // }
 
 
     return (
@@ -110,78 +116,83 @@ const TypingTest = () => {
             <h1 className="text-2xl color-4 mx-auto">Typing Test</h1>
             <h1 className="text-2xl color-7 mx-auto">{timer}</h1>
 
-            <div className="text-xl mx-16 mb-8 relative">
+            <div className="text-xl mx-16 mb-8 relative overflow-hidden">
                 <input
                     ref={inputRef}
                     onKeyDown={handleKeyDown}
                     className="opacity-0 absolute top-0 left-0 h-full w-full"
                 />
 
-                <div
-                    className="flex flex-wrap mx-auto items-center text-center text-xl"
-                >
-                    {words.map((word, index) => {
-                        let className = "mr-2";
+                <div className="flex flex-col mx-auto items-center text-center text-xl">
+                    {lines.length > 0 && lines.slice(visibleLine[0], visibleLine[1]).map((line, lineIndex) => (
+                        <div key={lineIndex + visibleLine[0]} className="flex flex-wrap justify-center mb-2">
+                            {line.split(" ").map((word, wordIndex) => {
+                                const globalWordIndex = (lineIndex + visibleLine[0]) * wordsPerLine + wordIndex;
+                                let className = "mr-2";
 
-                        // Completed Words
-                        if (index < currWordIndex) {
-                            const typed = userInput[index] || "";
-                            return (
-                                <span key={index} className={className}>
-                                    {word.split("").map((char, i) => {
-                                        const color =
-                                            typed[i] === char
-                                                ? "text-green-500"
-                                                : "text-red-500";
-                                        return (
-                                            <span key={i} className={color}>
-                                                {char}
-                                            </span>
-                                        );
-                                    })}
-                                </span>
-                            );
-                        }
-                        // Current Words
-                        if (index === currWordIndex) {
-                            return (
-                                <span key={index} className={className}>
-                                    {word.split("").map((char, i) => {
-                                        let color = "";
-                                        if (i < currInput.length) {
-                                            color =
-                                                currInput[i] === char
-                                                    ? "text-green-500"
-                                                    : "text-red-500";
-                                        }
-                                        return (
-                                            <span key={i} className={color}>
-                                                {char}
-                                            </span>
-                                        );
-                                    })}
-                                    {currInput.length > word.length &&
-                                        currInput
-                                            .slice(word.length)
-                                            .split("")
-                                            .map((char, j) => (
-                                                <span
-                                                    key={`extra-${j}`}
-                                                    className="text-red-500 underline"
-                                                >
-                                                    {char}
-                                                </span>
-                                            ))}
-                                </span>
-                            );
-                        }
-                        // Other
-                        return (
-                            <span key={index} className={className}>
-                                {word}
-                            </span>
-                        );
-                    })}
+                                // Completed Words
+                                if (globalWordIndex < currWordIndex) {
+                                    const typed = userInput[globalWordIndex] || "";
+                                    return (
+                                        <span key={globalWordIndex} className={className}>
+                                            {word.split("").map((char, i) => {
+                                                const color =
+                                                    typed[i] === char ? "text-green-500" : "text-red-500";
+                                                return (
+                                                    <span key={i} className={color}>
+                                                        {char}
+                                                    </span>
+                                                );
+                                            })}
+                                        </span>
+                                    );
+                                }
+
+                                // Current Word
+                                if (globalWordIndex === currWordIndex) {
+                                    return (
+                                        <span key={globalWordIndex} className={className}>
+                                            {word.split("").map((char, i) => {
+                                                let color = "";
+                                                if (i < currInput.length) {
+                                                    color = currInput[i] === char ? "text-green-500" : "text-red-500";
+                                                }
+                                                if (i === currInput.length) {
+                                                    color = "color-1 cursor";
+                                                }
+                                                return (
+                                                    <span key={i} className={color}>
+                                                        {char}
+                                                    </span>
+                                                );
+                                            })}
+
+                                            {/* Extra Characters after Word */}
+                                            {currInput.length > word.length &&
+                                                currInput
+                                                    .slice(word.length)
+                                                    .split("")
+                                                    .map((char, j) => (
+                                                        <span
+                                                            key={`extra-${j}`}
+                                                            className="text-red-500 underline"
+                                                        >
+                                                            {char}
+                                                        </span>
+                                                    ))}
+                                        </span>
+                                    );
+                                }
+
+                                // Other Words
+                                return (
+                                    <span key={globalWordIndex} className={className}>
+                                        {word}
+                                    </span>
+                                );
+                            })}
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
