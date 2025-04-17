@@ -2,7 +2,7 @@ import React from "react";
 import Command from "@/components/command";
 import Link from "next/link";
 import TypingTest from "@/components/TypingTest";
-const TypingTestPage = () => {
+const TypingTestPage = async () => {
     return (
         <div className="w-full h-full overflow-hidden">
             <Command filePath="Games" command="python typing-test.py" />

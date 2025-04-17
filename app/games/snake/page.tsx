@@ -2,7 +2,7 @@ import React from "react";
 import Command from "@/components/command";
 import Snake from "@/components/Snake";
 import Link from "next/link";
-const SnakePage = () => {
+const SnakePage = async () => {
     return (
         <div className="w-full h-full overflow-hidden">
             <Command filePath="Games" command="python snake.py" />

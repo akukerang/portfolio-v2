@@ -1,7 +1,7 @@
 import React from "react";
 import Command from "@/components/command";
 import ServiceInfo from "@/components/serviceInfo";
-const Services = () => {
+const Services = async () => {
   return (
     <div>
       <Command command="cd Services" />

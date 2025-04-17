@@ -4,7 +4,7 @@ interface GameItemProps {
     name: string;
 }
 
-const GameItem: React.FC<GameItemProps> = ({ name }) => {
+const GameItem: React.FC<GameItemProps> = async ({ name }) => {
     return (
         <Link href={`/games/${name}`}>
             <span className="color-5 text-lg hover:underline"><CodeIcon fontSize='inherit' className='mr-1' />{`${name}.py`}</span>

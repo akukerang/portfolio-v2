@@ -1,6 +1,6 @@
 import React from "react";
 import Command from "./command";
-const Neofetch = () => {
+const Neofetch = async () => {
   return (
     <div className="neofetch">
       <Command command="neofetch" />

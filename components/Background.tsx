@@ -1,5 +1,5 @@
 import Image from "next/image";
-const Background = () => {
+const Background = async () => {
     return (
         <Image
             src="https://raw.githubusercontent.com/KDE/plasma-workspace-wallpapers/refs/heads/master/Mountain/contents/images_dark/5120x2880.png"
