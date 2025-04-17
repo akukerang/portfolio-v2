@@ -47,7 +47,13 @@ const BarChart = ({ name, usage, max }: { name: string, usage: number, max: numb
 interface StatusProps {
     stars: number;
     commits: number;
-    playing: string;
+    playing: PlayingProps;
+}
+
+interface PlayingProps {
+    error?: string;
+    song: string;
+    artist: string;
 }
 
 const StatusInfo: React.FC<StatusProps> = ({ stars, commits, playing }) => {
@@ -86,8 +92,6 @@ const StatusInfo: React.FC<StatusProps> = ({ stars, commits, playing }) => {
         return () => clearInterval(interval); // cleanup
     }, []);
 
-
-
     return (
         <div className="text-base mt-2 border-1 border-[var(--color_08)] rounded-sm py-4 w-full mb-2">
             <div className="flex flex-row justify-between px-4 ">
@@ -111,8 +115,8 @@ const StatusInfo: React.FC<StatusProps> = ({ stars, commits, playing }) => {
                     <h1 className="w-[45%] md:w-[33%] min-w-[150px] truncate">INFO</h1>
                 </div>
                 <StatusItem pid="001" task="work" status="RUNNING" cpu={cpuValues[0]} mem={memoryValues[0]} info="Student" />
-                <StatusItem pid="002" task="now-playing" status={playing !== "" ? "RUNNING" : "IDLE"}
-                    cpu={cpuValues[1]} mem={memoryValues[1]} info={playing !== "" ? playing : "Nothing playing"} />
+                <StatusItem pid="002" task="now-playing" status={playing.error === "" ? "RUNNING" : "IDLE"}
+                    cpu={cpuValues[1]} mem={memoryValues[1]} info={playing.error === "" ? `${playing.artist || "Unknown Artist"} - ${playing.song || "Unknown Song"}` : playing.error || "No Error"} />
                 <StatusItem pid="003" task="github-stars" status="IDLE" cpu={cpuValues[2]} mem={memoryValues[2]} info={`${stars} stars`} />
                 <StatusItem pid="004" task="github-commits" status="IDLE" cpu={cpuValues[3]} mem={memoryValues[3]} info={`${commits} commits (${year})`} />
             </div>

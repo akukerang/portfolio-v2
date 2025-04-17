@@ -20,6 +20,12 @@ async function getAccessToken() {
     return response.data.access_token
 }
 
+interface PlayingProps {
+    error?: string;
+    song: string;
+    artist: string;
+}
+
 export default async function getPlaying() {
     try {
         const accessToken = await getAccessToken();
@@ -30,15 +36,15 @@ export default async function getPlaying() {
         const response = await axios.get(url, { headers: header });
         const data = response.data;
         if (!data.is_playing || !data) {
-            return { error: "Nothing is playing" };
+            return { error: "Nothing is playing", song: "", artist: "" };
         }
         return {
-            song: data.item.name,
-            artist: data.item.artists[0].name,
+            song: data.item.name || "Unknown",
+            artist: data.item.artists[0].name || "Unknown",
         };
     } catch (err) {
         console.error(err);
-        return { error: "Failed to fetch now playing" };
+        return { error: "Failed to fetch", song: "", artist: "" };
     }
 }
 
