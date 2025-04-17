@@ -7,7 +7,7 @@ interface ProjectItemProps {
   lang: string;
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = (params) => {
+const ProjectItem: React.FC<ProjectItemProps> = async (params) => {
   const { name, description, date, lang } = params;
   return (
     <div className="text-base my-1">

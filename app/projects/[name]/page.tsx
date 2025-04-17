@@ -1,22 +1,22 @@
-"use client";
-import { useParams } from "next/navigation";
 import React from "react";
 import Command from "@/components/command";
 import ProjectInfo from "@/components/projectInfo";
 
-
-
-const ProjectPage = () => {
-  const params = useParams();
-  if (!params) {
+const ProjectPage = async ({ params }: {
+  params: Promise<{ name: string }>;
+}) => {
+  const { name } = await params;
+  if (!name) {
     return <div>Error: Project not found</div>;
   }
-  const commandString = `cat ${params.name}`;
+
+  const commandString = `cat ${name}`;
   return (
     <div>
       <Command filePath="Projects" command={commandString} />
-      {params.name && <ProjectInfo ProjectName={params.name as string} />}
+      <ProjectInfo ProjectName={name} />
     </div>
   );
 };
+
 export default ProjectPage;
