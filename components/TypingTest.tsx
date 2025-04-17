@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef, use } from "react";
+import { useState, useEffect, useRef } from "react";
 import WordSet from "../data/english_5k.json";
 
 interface ResultProps {

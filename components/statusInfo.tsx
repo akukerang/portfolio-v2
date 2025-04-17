@@ -9,6 +9,7 @@ interface StatusItemProps {
     mem: number;
     info: string;
 }
+
 const StatusItem = ({ pid, task, status, cpu, mem, info }: StatusItemProps) => {
     return (
         <div className="flex flex-row px-4">
@@ -43,64 +44,25 @@ const BarChart = ({ name, usage, max }: { name: string, usage: number, max: numb
 
 
 
-const StatusInfo = () => {
+interface StatusProps {
+    stars: number;
+    commits: number;
+    playing: string;
+}
+
+const StatusInfo: React.FC<StatusProps> = ({ stars, commits, playing }) => {
     const [cpuUsage, setCPUUsage] = useState(48)
     const [memoryUsage, setMemoryUsage] = useState(3148)
     const [memoryValues, setMemoryValues] = useState<number[]>([1128, 432, 124, 84]);
     const [cpuValues, setCPUValues] = useState<number[]>([15, 12, 5, 4]);
-    const [playing, setPlaying] = useState("");
-    const [stars, setStars] = useState(0);
-    const [commits, setCommits] = useState(0);
     const year = new Date().getFullYear();
 
     const getRandomValue = (min: number, max: number) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
 
-
-    const getNowPlaying = async () => {
-        try {
-            const res = await fetch('/api/nowPlaying');
-            const data = await res.json();
-            if (data.error || !data.isPlaying) {
-                return "";
-            }
-            return `${data.artist} - ${data.song}`;
-        } catch (error) {
-            console.error("Error fetching now playing data:", error);
-            return "";
-        }
-    }
-
-    const getStats = async () => {
-        try {
-            const res = await fetch('/api/github');
-            const data = await res.json();
-            if (data.error) {
-                return null;
-            }
-            return { stars: data.stars, commits: data.commits };
-        } catch (error) {
-            console.error("Error fetching GitHub data:", error);
-            return null;
-        }
-    }
-
-
     useEffect(() => {
-        const fetchNowPlaying = async () => {
-            const nowPlaying = await getNowPlaying();
-            setPlaying(nowPlaying);
-        };
-        fetchNowPlaying();
-        const fetchStats = async () => {
-            const stats = await getStats();
-            if (stats) {
-                setStars(stats.stars);
-                setCommits(stats.commits);
-            }
-        }
-        fetchStats();
+
         const interval = setInterval(() => {
             const cpuValues =
                 [
