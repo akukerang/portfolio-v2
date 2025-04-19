@@ -73,7 +73,7 @@ const Snake = () => {
     const [snake, setSnake] = useState(initSnake);
     const [food, setFood] = useState(initFood);
     const [direction, setDirection] = useState([0, 0]);
-    const [score, setScore] = useState(0);
+    const score = snake.length - 1;
     const [gameOver, setGameOver] = useState(false);
     const refInt = useRef<NodeJS.Timeout | null>(null);
 
@@ -91,7 +91,6 @@ const Snake = () => {
                 setSnake(initSnake);
                 setFood(initFood);
                 setDirection([1, 0]);
-                setScore(0);
                 return;
             }
             if (gameStart) { // Game started check for movement controls
@@ -138,7 +137,6 @@ const Snake = () => {
                     }
                     let newSnake = [newHead, ...prevSnake];
                     if (newHead[0] === food[0] && newHead[1] === food[1]) { // Check if food eaten
-                        setScore((prevScore) => prevScore + 1);
                         let newX = Math.floor(Math.random() * gridSize);
                         let newY = Math.floor(Math.random() * gridSize);
                         while (newSnake.some((part) => part[0] === newX && part[1] === newY)) { // Check if food spawns on snake
