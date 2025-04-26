@@ -69,6 +69,16 @@ const TypingTest = () => {
         } else if (timer == 0) {
             setGameStart(false);
             // Calculate WPM and ACC
+            // https://www.typingtyping.com/wpm-calculator/
+            // Gross WPM = ((totalWordsTyped / 5)) / Time (min)
+            // Errors = Uncorrected Errors/ Time (min)
+            // Net WPM = Gross WPM - Errors
+            // Accuracy = correcWords / totalWords * 100 
+
+
+
+
+
 
         }
         return () => clearInterval(interval);
