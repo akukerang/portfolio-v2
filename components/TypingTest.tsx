@@ -18,7 +18,7 @@ const ResultScreen: React.FC<ResultProps> = ({ wpm, acc }) => {
 
 const TypingTest = () => {
     const [gameStart, setGameStart] = useState(false);
-    const [timer, setTimer] = useState(30);
+    const [timer, setTimer] = useState(10);
 
     const [wpm, setWPM] = useState(0);
     const [acc, setAcc] = useState(0);
@@ -69,16 +69,39 @@ const TypingTest = () => {
         } else if (timer == 0) {
             setGameStart(false);
             // Calculate WPM and ACC
+            // time = 30 seconds = 0.5 minutes
             // https://www.typingtyping.com/wpm-calculator/
-            // Gross WPM = ((totalWordsTyped / 5)) / Time (min)
+            // totalTyped = all characters entries / 5
+            // Gross WPM = totalTyped / Time (min)
             // Errors = Uncorrected Errors/ Time (min)
             // Net WPM = Gross WPM - Errors
             // Accuracy = correcWords / totalWords * 100 
+            const wordsTyped = userInput.length + (currInput.length > 0 ? 1 : 0);
+            const incorrectWords = words.slice(0, wordsTyped)
+                .filter((word, index) => word !== userInput[index] || word !== currInput)
+                ;
+            const totalChars = userInput.join("") + currInput
+            console.log("words typed")
+            console.log(wordsTyped)
+            console.log("userinput")
+            console.log(userInput)
+            console.log("correct")
+            console.log(words.slice(0, wordsTyped))
+            console.log("incorrect words")
+            console.log(incorrectWords)
+            console.log(totalChars)
 
 
 
 
 
+
+
+
+
+
+            setWPM(0);
+            setAcc(0);
 
         }
         return () => clearInterval(interval);
@@ -118,11 +141,11 @@ const TypingTest = () => {
         }
     }
 
-    // if (timer === 0) {
-    //     return (
-    //         <ResultScreen wpm={wpm} acc={acc} />
-    //     )
-    // }
+    if (timer === 0) {
+        return (
+            <ResultScreen wpm={wpm} acc={acc} />
+        )
+    }
 
 
     return (

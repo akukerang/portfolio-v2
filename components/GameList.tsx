@@ -17,7 +17,7 @@ const GameList = () => {
     return (
         <div className="flex flex-col">
             <GameItem name="snake" />
-            <GameItem name="typing-test" />
+            {/* <GameItem name="typing-test" /> */}
         </div>
     );
 };
