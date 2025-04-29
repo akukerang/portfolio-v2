@@ -1,5 +1,5 @@
 import React from "react";
-const ServiceInfo = () => {
+const ServiceInfo = async () => {
   return (
     <div>
       <h1> Services </h1>

@@ -9,6 +9,7 @@ interface StatusItemProps {
     mem: number;
     info: string;
 }
+
 const StatusItem = ({ pid, task, status, cpu, mem, info }: StatusItemProps) => {
     return (
         <div className="flex flex-row px-4">
@@ -43,64 +44,31 @@ const BarChart = ({ name, usage, max }: { name: string, usage: number, max: numb
 
 
 
-const StatusInfo = () => {
+interface StatusProps {
+    stars: number;
+    commits: number;
+    playing: PlayingProps;
+}
+
+interface PlayingProps {
+    error?: string;
+    song: string;
+    artist: string;
+}
+
+const StatusInfo: React.FC<StatusProps> = ({ stars, commits, playing }) => {
     const [cpuUsage, setCPUUsage] = useState(48)
     const [memoryUsage, setMemoryUsage] = useState(3148)
     const [memoryValues, setMemoryValues] = useState<number[]>([1128, 432, 124, 84]);
     const [cpuValues, setCPUValues] = useState<number[]>([15, 12, 5, 4]);
-    const [playing, setPlaying] = useState("");
-    const [stars, setStars] = useState(0);
-    const [commits, setCommits] = useState(0);
     const year = new Date().getFullYear();
 
     const getRandomValue = (min: number, max: number) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
 
-
-    const getNowPlaying = async () => {
-        try {
-            const res = await fetch('/api/nowPlaying');
-            const data = await res.json();
-            if (data.error || !data.isPlaying) {
-                return "";
-            }
-            return `${data.artist} - ${data.song}`;
-        } catch (error) {
-            console.error("Error fetching now playing data:", error);
-            return "";
-        }
-    }
-
-    const getStats = async () => {
-        try {
-            const res = await fetch('/api/github');
-            const data = await res.json();
-            if (data.error) {
-                return null;
-            }
-            return { stars: data.stars, commits: data.commits };
-        } catch (error) {
-            console.error("Error fetching GitHub data:", error);
-            return null;
-        }
-    }
-
-
     useEffect(() => {
-        const fetchNowPlaying = async () => {
-            const nowPlaying = await getNowPlaying();
-            setPlaying(nowPlaying);
-        };
-        fetchNowPlaying();
-        const fetchStats = async () => {
-            const stats = await getStats();
-            if (stats) {
-                setStars(stats.stars);
-                setCommits(stats.commits);
-            }
-        }
-        fetchStats();
+
         const interval = setInterval(() => {
             const cpuValues =
                 [
@@ -124,8 +92,6 @@ const StatusInfo = () => {
         return () => clearInterval(interval); // cleanup
     }, []);
 
-
-
     return (
         <div className="text-base mt-2 border-1 border-[var(--color_08)] rounded-sm py-4 w-full mb-2">
             <div className="flex flex-row justify-between px-4 ">
@@ -145,12 +111,12 @@ const StatusInfo = () => {
                     <h1 className="w-[45%] md:w-[25%] min-w-[100px] truncate">TASK NAME</h1>
                     <h1 className="hidden md:block w-[15%] min-w-[80px] truncate">STATUS</h1>
                     <h1 className="hidden md:block w-[10%] min-w-[60px] truncate">CPU</h1>
-                    <h1 className="hidden md:block w-[10%] min-w-[60px] truncate">MEM</h1>
+                    <h1 className="hidden md:block w-[10%] min-w-[0px] truncate">MEM</h1>
                     <h1 className="w-[45%] md:w-[33%] min-w-[150px] truncate">INFO</h1>
                 </div>
                 <StatusItem pid="001" task="work" status="RUNNING" cpu={cpuValues[0]} mem={memoryValues[0]} info="Student" />
-                <StatusItem pid="002" task="now-playing" status={playing !== "" ? "RUNNING" : "IDLE"}
-                    cpu={cpuValues[1]} mem={memoryValues[1]} info={playing !== "" ? playing : "Nothing playing"} />
+                <StatusItem pid="002" task="now-playing" status={playing.error === "" ? "RUNNING" : "IDLE"}
+                    cpu={cpuValues[1]} mem={memoryValues[1]} info={playing.error === "" ? `${playing.artist || "Unknown Artist"} - ${playing.song || "Unknown Song"}` : playing.error || "error"} />
                 <StatusItem pid="003" task="github-stars" status="IDLE" cpu={cpuValues[2]} mem={memoryValues[2]} info={`${stars} stars`} />
                 <StatusItem pid="004" task="github-commits" status="IDLE" cpu={cpuValues[3]} mem={memoryValues[3]} info={`${commits} commits (${year})`} />
             </div>

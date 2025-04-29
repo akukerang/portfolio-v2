@@ -1,8 +1,7 @@
-"use client"
 import React from "react";
 import ProjectList from "@/components/projectList";
 import Command from "@/components/command";
-const Projects = () => {
+const Projects = async () => {
   return (
     <div>
       <ProjectList />

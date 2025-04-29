@@ -1,6 +1,6 @@
 import Neofetch from "@/components/neofetch";
 import Command from "@/components/command";
-export default function Home() {
+export default async function Home() {
   return (
     <div>
       <Neofetch />

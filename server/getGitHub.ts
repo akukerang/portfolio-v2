@@ -1,8 +1,7 @@
-import { NextResponse } from "next/server";
 import axios from "axios";
 const jsdom = require("jsdom")
 
-async function getStats() {
+export default async function getGitHub() {
     let stats = {
         stars: 0,
         commits: 0
@@ -26,13 +25,4 @@ async function getStats() {
     return stats;
 }
 
-export async function GET() {
-    try {
-        const stats = await getStats();
-        return NextResponse.json(stats);
-    } catch (err) {
-        console.error(err);
-        return NextResponse.json({ error: "Failed to fetch GitHub Stats" }, { status: 500 });
-    }
-}
 

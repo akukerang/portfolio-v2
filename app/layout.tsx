@@ -4,14 +4,15 @@ import { ThemeProvider } from "@/helper/ThemeContext";
 import Ls from "@/components/ls";
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Background from "@/components/Background";
 
 export const metadata: Metadata = {
   title: "gabe@dev",
   description: "Portfolio website of Gabriel Suoth, a software developer",
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
+    icon: "/icon.ico",
+    shortcut: "/icon.ico",
+    apple: "/icon.ico",
   },
 };
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       </head>
 
       <body className="h-screen overflow-hidden">
+        <Background />
         <div className="flex flex-col h-screen">
           <ThemeProvider>
             <DesktopTaskbar />
@@ -54,7 +56,7 @@ export default function RootLayout({
 
               {/* Terminal Content */}
               <div className="terminal-body overflow-y-auto overflow-x-hidden h-full md:h-[80%] 2xl:h-3/4
-                    flex flex-col justify-start items-start pt-4 px-8 bg-[var(--bg-color)] pb-10 rounded-b-lg shadow-2xl">
+                    flex flex-col justify-start items-start pt-4 px-8 bg-[var(--bg-color)] pb-16 rounded-b-lg shadow-2xl">
                 <Ls />
                 {children}
               </div>

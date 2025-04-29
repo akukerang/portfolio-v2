@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Carousel from "./carousel";
 import { createClient } from '@supabase/supabase-js'
-import { Database, Tables } from "@/helper/supabase"
+import { Database } from "@/helper/supabase"
 
 
 interface ProjectInfoProps {
@@ -14,38 +14,29 @@ type ProjectMedia = {
   videos?: string[];
 };
 
-const ProjectInfo: React.FC<ProjectInfoProps> = ({ ProjectName }) => {
-  const [project, setProject] = useState<(Tables<'projects'> & { media?: ProjectMedia }) | null>(null);
+const ProjectInfo: React.FC<ProjectInfoProps> = async ({ ProjectName }) => {
   const supabase = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
   );
-  useEffect(() => {
-    const fetchProject = async () => {
-      const { data, error } = await supabase
-        .from("projects")
-        .select()
-        .eq("name", ProjectName);
+  const { data, error } = await supabase
+    .from("projects")
+    .select()
+    .eq("name", ProjectName);
 
-      if (error) {
-        console.error("Error fetching projects:", error);
-        return;
-      }
+  if (error) {
+    console.error("Error fetching projects:", error);
+    return null;
+  }
+  let project = null;
 
-      if (data && data[0]) {
-        const parsedProject = {
-          ...data[0],
-          media: (data[0].media || {}) as ProjectMedia,
-        };
-        setProject(parsedProject);
-      } else {
-        setProject(null);
-      }
+  if (data && data[0]) {
+    const parsedProject = {
+      ...data[0],
+      media: (data[0].media || {}) as ProjectMedia,
     };
-
-    fetchProject();
-  }, [ProjectName]);
-
+    project = parsedProject;
+  }
 
   if (!project) return null;
 
