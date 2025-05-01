@@ -4,6 +4,7 @@ import Carousel from "./carousel";
 import { createClient } from '@supabase/supabase-js'
 import { Database } from "@/helper/supabase"
 
+export const revalidate = 0; // Revalidate on every request
 
 interface ProjectInfoProps {
   ProjectName: string;

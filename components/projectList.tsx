@@ -3,6 +3,10 @@ import Command from "./command";
 import ProjectItem from "./projectItem";
 import { createClient } from '@supabase/supabase-js'
 import { Database } from "@/helper/supabase"
+
+
+export const revalidate = 0; // Revalidate on every request
+
 const ProjectList = async () => {
   const supabase = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",

@@ -4,6 +4,9 @@ import StatusInfo from "@/components/statusInfo";
 import getPlaying from "@/server/getPlaying";
 import getGitHub from "@/server/getGitHub";
 
+
+export const revalidate = 0; // Revalidate on every request
+
 const Status = async () => {
     const [playingResult, githubResult] = await Promise.allSettled([getPlaying(), getGitHub()]);
 
