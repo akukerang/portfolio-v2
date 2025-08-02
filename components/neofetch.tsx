@@ -44,7 +44,7 @@ const Neofetch = async () => {
               <a className="color-4 underline" href="mailto: gabrielsuoth@gmail.com">
                 Email
               </a>
-              <a className="color-4 underline" href="https://www.gitub.com/akukerang">GitHub</a>
+              <a className="color-4 underline" href="https://www.github.com/akukerang">GitHub</a>
               <a className="color-4 underline" href="https://www.linkedin.com/in/gabriel-suoth/">Linkedin</a>
 
             </div>
