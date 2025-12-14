@@ -114,7 +114,7 @@ const StatusInfo: React.FC<StatusProps> = ({ stars, commits, playing }) => {
                     <h1 className="hidden md:block w-[10%] min-w-[0px] truncate">MEM</h1>
                     <h1 className="w-[45%] md:w-[33%] min-w-[150px] truncate">INFO</h1>
                 </div>
-                <StatusItem pid="001" task="work" status="RUNNING" cpu={cpuValues[0]} mem={memoryValues[0]} info="Student" />
+                <StatusItem pid="001" task="work" status="RUNNING" cpu={cpuValues[0]} mem={memoryValues[0]} info="Working" />
                 <StatusItem pid="002" task="now-playing" status={playing.error === "" ? "RUNNING" : "IDLE"}
                     cpu={cpuValues[1]} mem={memoryValues[1]} info={playing.error === "" ? `${playing.artist || "Unknown Artist"} - ${playing.song || "Unknown Song"}` : playing.error || "error"} />
                 <StatusItem pid="003" task="github-stars" status="IDLE" cpu={cpuValues[2]} mem={memoryValues[2]} info={`${stars} stars`} />

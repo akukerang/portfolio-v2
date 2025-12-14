@@ -15,33 +15,31 @@ const Neofetch = async () => {
           <h1 className="color-3 text-3xl">Gabriel Suoth</h1>
           <h1>--------------------</h1>
           <p>
-            <span className="color-5">Location</span>: West Palm Beach, FL
+            <span className="color-5">Location</span>: Serpong, Banten, Indonesia
           </p>
           <p>
             <span className="color-5">Education</span>: Florida Atlantic
             University
           </p>
           <p>
-            <span className="color-5">Major</span>: BS Computer Science, Minor
-            in AI
+            <span className="color-5">Major</span>: BS Computer Science,
+            <span className="color-2 italic"> Minor in AI</span>
           </p>
           <p>
-            <span className="color-5">Languages</span>: Python, TypeScript, JavaScript,
-            Go, Java
+            <span className="color-5">Languages</span>: Python, TypeScript, Go
           </p>
           <p>
             <span className="color-5">Frameworks/Libraries</span>: React, Next.js,
-            Node.js, Tailwind, Flask, Flutter, Pandas, TensorFlow
+            Node.js, Tailwind, Flutter
           </p>
           <p>
-            <span className="color-5">Tools</span>: Linux, Docker, Git, AutoCAD{" "}
-            <span className="color-2 italic">(cert. 2019)</span>, MSSQL{" "}
+            <span className="color-5">Tools</span>: Git, Linux, Docker, MSSQL{" "}
             <span className="color-2 italic">(cert. 2019)</span>
           </p>
           <div className="flex flex-row">
             <span className="color-5">Links</span>:
             <div className="flex flex-row gap-4 ml-3">
-              <a className="color-4 underline" href="mailto: gabrielsuoth@gmail.com">
+              <a className="color-4 underline" href="mailto: gabrieldsuoth@gmail.com">
                 Email
               </a>
               <a className="color-4 underline" href="https://www.github.com/akukerang">GitHub</a>

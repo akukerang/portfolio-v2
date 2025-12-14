@@ -33,20 +33,32 @@
   }
 }
 
-
-
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('/fonts/press-start-2p-v16-latin-regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 
 @font-face {
-  font-family: 'Gohu';
-  src: url('/fonts/Gohu.ttf') format('truetype');
+  font-family: 'Cascadia Code';
+  src: url('/fonts/cascadia-code-v5-latin-regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Cascadia Mono';
+  src: url('/fonts/cascadia-mono-v5-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Cascadia Code', sans-serif;
 }
 
 /* Catppuccin Frappe */
@@ -65,7 +77,8 @@ body {
 }
 
 .terminal-body {
-  font-family: 'Hack', monospace;
+  font-family: 'Cascadia Mono', monospace;
+
 }
 
 html,
@@ -139,17 +152,12 @@ body {
   background-color: var(--color_08);
 }
 
-
-/* html {
-  background-color: var(--bg-color);
-  background-image: url('https://github.com/akukerang/akukerang/blob/main/mountain.png?raw=true');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-} */
-
 .cursor {
   background-color: var(--color_08);
   height: 1rem;
   width: 0.6rem;
+}
+
+.pixel-font {
+  font-family: 'Press Start 2P';
 }

@@ -25,10 +25,10 @@ const TitleScreen = () => {
             <pre className="whitespace-pre overflow-clip text-xs">
                 {title}
             </pre>
-            <p className="text-lg">
+            <p className="text-sm">
                 Press Enter to start the game
             </p>
-            <p className="text-lg">
+            <p className="text-sm">
                 Control with arrow keys
             </p>
         </>
@@ -58,10 +58,10 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({ score }) => {
             <pre className="whitespace-pre overflow-clip text-xs">
                 {gameOverTitle}
             </pre>
-            <p className="text-lg">
+            <p className="text-sm">
                 Score: {score}
             </p>
-            <p className="text-lg">
+            <p className="text-sm">
                 Press Enter to play again
             </p>
         </>
@@ -155,7 +155,7 @@ const Snake = () => {
     }, [direction, gameStart, food, gameOver]);
 
     return (
-        <div className="mt-2 p-4 font-[Gohu] text-lg border-2 border-[var(--color_08)] rounded-sm w-full h-4/5">
+        <div className="mt-2 p-4 pixel-font text-sm border-2 border-[var(--color_08)] rounded-sm w-full h-4/5">
             <div className="flex flex-col text-center justify-center h-full">
                 {gameOver ? (
                     <GameOverScreen score={score} />
